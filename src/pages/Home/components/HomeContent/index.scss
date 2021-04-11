@@ -22,3 +22,9 @@
     }
   }
 }
+
+.za-collapse-item--active {
+  .za-collapse-item__content {
+    height: auto !important;
+  }
+}

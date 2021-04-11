@@ -1,7 +1,7 @@
 import React from 'react';
 import TrendCard from '../../../../components/TrendCard';
 import { Collapse } from 'zarm';
-import './index.scss'
+import './index.scss';
 
 const UserInfo = ({ item }) => {
   return (
@@ -36,7 +36,10 @@ function HomeContent({ list }) {
         {/* <div className='content'> */}
         {list.map((item, key) => {
           return (
-            <Collapse.Item key={key} title={<UserInfo item={item} />}>
+            <Collapse.Item
+              key={key}
+              title={<UserInfo item={item} className='88' />}
+            >
               <TrendCard item={item}></TrendCard>;
             </Collapse.Item>
           );
