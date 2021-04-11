@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import 'zarm/dist/zarm.css';
 
-function App({}) {
+function App() {
   return (
     <div>
       <BrowserRouter>
