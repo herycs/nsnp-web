@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import TrendCard from '../../../../components/TrendCard';
 import { Collapse } from 'zarm';
 import './index.scss';
+import { useHistory } from 'react-router';
 
 const UserInfo = ({ item }) => {
   return (
@@ -17,21 +18,27 @@ const UserInfo = ({ item }) => {
   );
 };
 
-function HomeContent({ list }) {
+function HomeContent({ list, handleChangeWriteModal }) {
   // 根据不同类型切换，发送请求，获取数据渲染
-  const animated = true;
+  let history = useHistory();
+  const handleClick = useCallback(
+    (item) => {
+      history.push('/detail?id=' + item.id);
+    },
+    [history]
+  );
   return (
     <>
       <Collapse
         disabled
         // activeKey={activeKey}
-        animated={animated}
-        multiple={animated}
+        animated={true}
+        multiple={true}
         onChange={(activeKey) => {
           // console.log(activeKey);
           // setActiveKey(activeKey);
         }}
-        defaultActiveKey={['0']}
+        defaultActiveKey={['0','1','2','3']}
       >
         {/* <div className='content'> */}
         {list.map((item, key) => {
@@ -40,7 +47,7 @@ function HomeContent({ list }) {
               key={key}
               title={<UserInfo item={item} className='88' />}
             >
-              <TrendCard item={item}></TrendCard>;
+              <TrendCard handleChangeWriteModal={handleChangeWriteModal} handleClick={handleClick} item={item}></TrendCard>
             </Collapse.Item>
           );
         })}

@@ -27,7 +27,7 @@ const routes = [
         // routes: [],
       },
       { path: '/message', component: Message },
-      { path: '/detail/:id', component: Detail },
+      { path: '/detail', component: Detail },
       { path: '/found', component: Found },
       // {
       //   path: '/child/:id',
