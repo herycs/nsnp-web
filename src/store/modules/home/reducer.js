@@ -29,8 +29,8 @@ const defaultState = fromJS({
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    // case actionTypes.TOGGLE_WRITE_COMMENT_SHOW:
-    //   return state.set('showWriteCommnet', action.payload);
+    case actionTypes.TOGGLE_WRITE_COMMENT_SHOW:
+      return state.set('showWriteCommnet', action.payload);
     // case actionTypes.CHANGE_HOME_DATA:
     //   return chanegHomeData(state, action);
     // case actionTypes.ADD_HOME_LIST:
