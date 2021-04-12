@@ -15,7 +15,7 @@ import {
   Loading,
   Input,
 } from 'zarm';
-import './index.scss'
+import './index.scss';
 
 const initVisibleState = {
   popBottom: false,
@@ -107,7 +107,7 @@ function Detail() {
             />
           </Cell>
           <Cell className='button-wrapper'>
-            <div className="zhanwei"></div>
+            <div className='zhanwei'></div>
             <Button
               size='xs'
               theme='primary'

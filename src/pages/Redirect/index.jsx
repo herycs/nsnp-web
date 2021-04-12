@@ -6,8 +6,8 @@ import UserTabBar from '../../components/TabBar';
 
 function Redirect({ route }) {
   let history = useHistory();
-  const pathname = history.location.pathname
-  
+  const pathname = history.location.pathname;
+
   const [visible, setVisible] = useState(false);
   const arr = ['/', '/home', '/found', '/me', '/message'];
   const map = {
@@ -17,12 +17,13 @@ function Redirect({ route }) {
     '/message': '消息',
     '/me': '我的',
     '/detail': '详情',
+    '/user': '个人主页',
   };
-  useEffect(() => {
-    console.log(history);
-    // console.log(route, 'redirect');
-    // 判断用户身份
-  }, [route]);
+  // useEffect(() => {
+  //   console.log(history);
+  //   // console.log(route, 'redirect');
+  //   // 判断用户身份
+  // }, [route]);
 
   useEffect(() => {
     if (arr.indexOf(pathname) === -1) {
@@ -36,7 +37,7 @@ function Redirect({ route }) {
     <div>
       <Header
         title={map[pathname]}
-        showBack={pathname === '/detail'}
+        showBack={pathname === '/detail' || pathname === '/user'}
       >
         {' '}
       </Header>

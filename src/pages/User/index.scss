@@ -1,0 +1,50 @@
+.user-wrapper {
+  .header {
+    padding: 20px;
+    // display: flex;
+    background-color: rgb(182, 160, 164);
+    .d {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      .left {
+        padding-top: 8px;
+        .avatar {
+          margin-bottom: 8px;
+          width: 60px;
+          height: 60px;
+        }
+        .username {
+          text-align: center;
+          width: 60px;
+          padding-bottom: 8px;
+        }
+      }
+      .right {
+        padding-right: 10px;
+        // height: 20px;
+        margin-top: -20px;
+        span {
+          font-size: 12px;
+          display: inline-block;
+          padding: 2px 6px;
+          margin: 2px 3px;
+          background-color: rgba(98, 89, 84,.6);
+          border-radius: 15px;
+        }
+      }
+    }
+    .bottom {
+      color: #fff;
+      .follow {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      }
+      .desc {
+        padding-top: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+}

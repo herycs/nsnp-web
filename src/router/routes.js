@@ -1,9 +1,10 @@
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Detail from '../pages/Detail';
-import Redirect from '../pages/Redirect';
+import Redirect from '../pages/Redirect/index';
 import Message from '../pages/Message';
 import Found from '../pages/Found';
+import User from '../pages/User';
 
 const routes = [
   {
@@ -29,6 +30,7 @@ const routes = [
       { path: '/message', component: Message },
       { path: '/detail', component: Detail },
       { path: '/found', component: Found },
+      { path: '/user', component: User },
       // {
       //   path: '/child/:id',
       //   component: Child,
