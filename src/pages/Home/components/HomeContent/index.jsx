@@ -6,14 +6,15 @@ import { useHistory } from 'react-router';
 
 const UserInfo = ({ item, handleRouteToUser }) => {
   return (
-    <div className='userinfo' onClick={() => handleRouteToUser(item)}>
-      <div className='avatar'>
+    <div className='userinfo'>
+      <div className='avatar' onClick={() => handleRouteToUser(item)}>
         <img src={item.url}></img>
       </div>
-      <div className='user'>
+      <div className='user' onClick={() => handleRouteToUser(item)}>
         <p className='name'>{item.name}</p>
         <p className='desc'>{item.desc}</p>
       </div>
+      <div className='zhanwei'></div>
     </div>
   );
 };

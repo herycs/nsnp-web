@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { Toast } from 'zarm';
 
 const Header = ({ userInfo }) => {
+  const [flag, setFlag] = useState(false);
+  const [optionFlag, setOptionFlag] = useState(false);
   return (
     <div className='header'>
       <div className='d'>
@@ -14,14 +17,54 @@ const Header = ({ userInfo }) => {
         </div>
         <div className='right'>
           <span className='message'>私信</span>
-          <span className='following'>关注</span>
-          <span className='option'>*</span>
+          <span
+            className='following'
+            onClick={() => {
+              if (optionFlag) {
+                Toast.show({
+                  content: '请取消屏蔽后，再进行关注',
+                  stayTime: 1500,
+                  afterClose: () => {
+                    // setFlag(!flag);
+                    // console.log('Toast已关闭');
+                  },
+                });
+              } else {
+                Toast.show({
+                  content: !flag ? '关注成功' : '已取消',
+                  stayTime: 1500,
+                  afterClose: () => {
+                    setFlag(!flag);
+                    // console.log('Toast已关闭');
+                  },
+                });
+              }
+            }}
+          >
+            {!flag ? '关注' : '取消关注'}
+          </span>
+          <span
+            className='option'
+            onClick={() => {
+              Toast.show({
+                content: !optionFlag ? '屏蔽成功,已同时取消关注' : '已取消',
+                stayTime: 1500,
+                afterClose: () => {
+                  setOptionFlag(!optionFlag);
+                  setFlag(false);
+                  // console.log('Toast已关闭');
+                },
+              });
+            }}
+          >
+            {!optionFlag ? '屏蔽' : '取消屏蔽'}
+          </span>
         </div>
       </div>
       <div className='bottom'>
         <p className='follow'>
           <span className='star'>123获赞</span>
-          <span className='follow-count'>123关注</span>
+          <span className='follow-count'>{flag ? 124 : 123}关注</span>
           <span className='fans'>123粉丝</span>
         </p>
         <p className='desc'>{userInfo.desc}</p>
@@ -31,13 +74,25 @@ const Header = ({ userInfo }) => {
 };
 
 const List = () => {
-  return <div className='list'>liebiao</div>;
+  const [active, setActive] = useState(0);
+  let arr = ['帖子', '评论', '圈子'];
+  return (
+    <div className='list'>
+      {arr.map((item, index) => (
+        <div
+          className={active === index ? 'active item' : 'item'}
+          onClick={() => setActive(index)}
+          key={index}
+        >
+          <span>{item}</span>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 function User() {
   const userInfo = useSelector((state) => {
-    // console.log(state.getIn(['home', 'showWriteCommnet']));
-    // console.log(state.getIn('user', 'id'));
     return state.getIn(['user', 'userInfo']);
   });
   return (

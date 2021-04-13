@@ -17,16 +17,6 @@ import {
 } from 'zarm';
 import './index.scss';
 
-const initVisibleState = {
-  popBottom: false,
-  popTop: false,
-  popLeft: false,
-  popRight: false,
-  picker: false,
-  popSpec: false,
-  popCenterSpec: false,
-};
-
 const item = {
   id: '2123bsa',
   name: '张三',
