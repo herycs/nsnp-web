@@ -16,7 +16,21 @@ const Header = ({ userInfo }) => {
           <p className='username'>{userInfo.name}</p>
         </div>
         <div className='right'>
-          <span className='message'>私信</span>
+          <span
+            className='message'
+            onClick={() => {
+              Toast.show({
+                content: '当前功能未开放',
+                stayTime: 1500,
+                afterClose: () => {
+                  // setFlag(!flag);
+                  // console.log('Toast已关闭');
+                },
+              });
+            }}
+          >
+            私信
+          </span>
           <span
             className='following'
             onClick={() => {
@@ -30,11 +44,11 @@ const Header = ({ userInfo }) => {
                   },
                 });
               } else {
+                setFlag(!flag);
                 Toast.show({
                   content: !flag ? '关注成功' : '已取消',
                   stayTime: 1500,
                   afterClose: () => {
-                    setFlag(!flag);
                     // console.log('Toast已关闭');
                   },
                 });
@@ -46,12 +60,12 @@ const Header = ({ userInfo }) => {
           <span
             className='option'
             onClick={() => {
+              setOptionFlag(!optionFlag);
+              setFlag(false);
               Toast.show({
                 content: !optionFlag ? '屏蔽成功,已同时取消关注' : '已取消',
                 stayTime: 1500,
                 afterClose: () => {
-                  setOptionFlag(!optionFlag);
-                  setFlag(false);
                   // console.log('Toast已关闭');
                 },
               });
@@ -78,15 +92,17 @@ const List = () => {
   let arr = ['帖子', '评论', '圈子'];
   return (
     <div className='list'>
-      {arr.map((item, index) => (
-        <div
-          className={active === index ? 'active item' : 'item'}
-          onClick={() => setActive(index)}
-          key={index}
-        >
-          <span>{item}</span>
-        </div>
-      ))}
+      <div className='list-header'>
+        {arr.map((item, index) => (
+          <div
+            className={active === index ? 'active item' : 'item'}
+            onClick={() => setActive(index)}
+            key={index}
+          >
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
