@@ -8,6 +8,7 @@ import User from '../pages/User/index';
 import Mine from '../pages/Mine';
 import Setting from '../pages/Setting';
 import Register from '../pages/Register';
+import PushArticle from '../pages/PushArticle';
 
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
       {
         path: '/register',
         component: Register,
+        // routes: [],
+      },
+      {
+        path: '/pusharticle',
+        component: PushArticle,
         // routes: [],
       },
       // {
