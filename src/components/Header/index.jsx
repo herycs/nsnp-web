@@ -1,23 +1,36 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { NavBar, Icon } from 'zarm';
 
-function Header({ title = '首页', showBack = false }) {
+function Header({ title = '首页', showBack = false, showSetting = true }) {
+  const history = useHistory();
   return (
     <div>
-      {showBack ? (
-        <NavBar
-          left={
+      <NavBar
+        title={title}
+        left={
+          showBack ? (
             <Icon
               type='arrow-left'
               theme='primary'
               onClick={() => window.history.back()}
             />
-          }
-          title={title}
-        />
-      ) : (
-        <NavBar title={title} />
-      )}
+          ) : (
+            ''
+          )
+        }
+        right={
+          showSetting ? (
+            <Icon
+              type='arrow-right'
+              theme='primary'
+              onClick={() => history.push('/setting')}
+            />
+          ) : (
+            ''
+          )
+        }
+      />
     </div>
   );
 }

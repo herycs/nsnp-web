@@ -6,6 +6,8 @@ import Message from '../pages/Message/index';
 import Found from '../pages/Found/index';
 import User from '../pages/User/index';
 import Mine from '../pages/Mine';
+import Setting from '../pages/Setting';
+import Register from '../pages/Register';
 
 const routes = [
   {
@@ -35,6 +37,16 @@ const routes = [
       {
         path: '/me',
         component: Mine,
+        // routes: [],
+      },
+      {
+        path: '/setting',
+        component: Setting,
+        // routes: [],
+      },
+      {
+        path: '/register',
+        component: Register,
         // routes: [],
       },
       // {

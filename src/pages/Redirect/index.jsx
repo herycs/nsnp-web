@@ -18,6 +18,7 @@ function Redirect({ route }) {
     '/me': '我的',
     '/detail': '详情',
     '/user': '个人主页',
+    '/setting': '设置',
   };
   // useEffect(() => {
   //   console.log(history);
@@ -32,12 +33,13 @@ function Redirect({ route }) {
       setVisible(true);
     }
   }, [arr, pathname]);
-
+  let showBackList = ['/detail', '/user', '/setting'];
   return (
     <div>
       <Header
         title={map[pathname]}
-        showBack={pathname === '/detail' || pathname === '/user'}
+        showBack={showBackList.indexOf(pathname) !== -1}
+        showSetting={pathname === '/me'}
       >
         {' '}
       </Header>

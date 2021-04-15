@@ -46,7 +46,7 @@ function Mine() {
             <TabBar.Item
               itemKey='found'
               title={item.title}
-              icon={<TabIcon type='insurance' key={index} />}
+              icon={<TabIcon type='insurance' key={index + item} />}
             />
           );
         })}
