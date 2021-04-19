@@ -1,0 +1,34 @@
+.register-wrapper {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .register-plan-wrapper {
+
+
+                .register-notice {
+                        font-size: 20px;
+                        padding: 20px 0;
+                }
+
+                .register-form-wrapper {
+                        background-color: aqua;
+                        div {
+                                padding: 15px 0;
+                        }
+ 
+
+                        
+                }
+                .register-button {
+                        padding: 10px 0;
+                        font-size: 15px;
+                        background-color: #eac;
+                }
+        }
+
+ 
+}
+
+

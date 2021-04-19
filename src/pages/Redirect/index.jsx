@@ -19,6 +19,7 @@ function Redirect({ route }) {
     '/detail': '详情',
     '/user': '个人主页',
     '/setting': '设置',
+    '/share' : '分享'
   };
   // useEffect(() => {
   //   console.log(history);
@@ -33,7 +34,7 @@ function Redirect({ route }) {
       setVisible(true);
     }
   }, [arr, pathname]);
-  let showBackList = ['/detail', '/user', '/setting'];
+  let showBackList = ['/detail', '/user', '/setting', '/share'];
   return (
     <div>
       <Header

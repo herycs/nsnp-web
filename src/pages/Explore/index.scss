@@ -1,0 +1,32 @@
+.explore-wrapper {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+
+        .explore-plan-wrapper {
+
+                div {
+                        margin: 20px 0;
+                } 
+
+                .explore-head-wrapper {
+                        flex-wrap: nowrap;
+
+                        .explore-head-item {
+                                font-size: 20px;
+                        }
+                }
+
+                .explore-title {
+                        font-size: 20px;
+                }
+
+                .explore-resource-wrapper {
+                        background-color: aqua;
+                }
+
+        }
+
+
+}

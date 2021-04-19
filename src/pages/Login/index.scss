@@ -1,0 +1,44 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: #fac;
+  
+  div {
+    padding: 20px 0;
+  }
+  
+
+  .login-plan-wrapper {
+    .login-title {
+      padding: 10px 0;
+      font-size: 1.5em;
+    }
+
+    .login-form-wrapper {
+
+      .login-account-wrapper {
+        
+        background-color: #fee;
+      }
+      .login-checkNumber-wrapper {
+        background-color: aquamarine;
+      }
+    }
+
+    .user-access {
+      align-self: flex-end;
+      font-size: 0.5em;
+      color: #acc;
+    }
+  }
+}
+
+.split-char {
+  font-size: 1em;
+  color: #acc;
+}
+.input-notice {
+  color:#acc;
+}

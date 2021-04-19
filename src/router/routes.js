@@ -1,59 +1,64 @@
-import Home from '../pages/Home/index';
-import Login from '../pages/Login/index';
-import Detail from '../pages/Detail/index';
-import Redirect from '../pages/Redirect/index';
-import Message from '../pages/Message/index';
-import Found from '../pages/Found/index';
-import User from '../pages/User/index';
-import Mine from '../pages/Mine';
-import Setting from '../pages/Setting';
-import Register from '../pages/Register';
-import PushArticle from '../pages/PushArticle';
+import Home from "../pages/Home/index";
+import Login from "../pages/Login/index";
+import Detail from "../pages/Detail/index";
+import Redirect from "../pages/Redirect/index";
+import Message from "../pages/Message/index";
+import Explore from "../pages/Explore/index";
+import User from "../pages/User/index";
+import Mine from "../pages/Mine";
+import Setting from "../pages/Setting";
+import Register from "../pages/Register";
+import PushArticle from "../pages/PushArticle";
+import Share from "../pages/Share";
 
 const routes = [
   {
     component: Redirect,
     routes: [
       {
-        path: '/login',
+        path: "/login",
         exact: true,
         component: Login,
       },
       {
-        path: '/',
+        path: "/",
         exact: true,
         component: Home,
         // routes: [],
       },
       {
-        path: '/home',
+        path: "/home",
         exact: true,
         component: Home,
         // routes: [],
       },
-      { path: '/message', component: Message },
-      { path: '/detail', component: Detail },
-      { path: '/found', component: Found },
-      { path: '/user', component: User },
+      { path: "/message", component: Message },
+      { path: "/detail", component: Detail },
+      { path: "/explore", component: Explore },
+      { path: "/user", component: User },
       {
-        path: '/me',
+        path: "/me",
         component: Mine,
         // routes: [],
       },
       {
-        path: '/setting',
+        path: "/setting",
         component: Setting,
         // routes: [],
       },
       {
-        path: '/register',
+        path: "/register",
         component: Register,
         // routes: [],
       },
       {
-        path: '/pusharticle',
+        path: "/pusharticle",
         component: PushArticle,
         // routes: [],
+      },
+      {
+        path: "/share",
+        component: Share,
       },
       // {
       //   path: '/child/:id',
