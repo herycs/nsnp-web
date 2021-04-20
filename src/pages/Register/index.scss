@@ -1,34 +1,58 @@
 .register-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff;
+  height: 100vh;
 
+  .register-plan-wrapper {
+
+
+    .register-header {
+      display: flex;
+      justify-content: center;
+
+      padding-top: 20px;
+      .register-title {
+        font-size: 25px;
+      }
+    }
+
+    .register-form {
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+
+      .register-item {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        border-radius: 50px;
+        background-color: #f5f5f5;
+        padding: 10px;
+        margin: 5px;
 
-        .register-plan-wrapper {
-
-
-                .register-notice {
-                        font-size: 20px;
-                        padding: 20px 0;
-                }
-
-                .register-form-wrapper {
-                        background-color: aqua;
-                        div {
-                                padding: 15px 0;
-                        }
- 
-
-                        
-                }
-                .register-button {
-                        padding: 10px 0;
-                        font-size: 15px;
-                        background-color: #eac;
-                }
+        .register-item-notice {
+          color: #a8a2a2;
+          padding-right: 10px;
         }
+        .register-item-prop {
+          color: #a8a2a2;
+          font-size: #a8a2a2;
+        }
+      }
 
- 
+      .register-button-wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        .register-button {
+          font-size: 18px;
+
+          color: #a8a2a2;
+        }
+      }
+    }
+  }
 }
-
-

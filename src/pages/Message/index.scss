@@ -1,21 +1,51 @@
 .msg-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 5px;
+  .msg-plan-wrapper {
+    width: 100%;
 
+    .msg-menu {
+      padding-top: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      background-color: aqua;
 
-        .msg-menu {
-                font-size: 15px;
-                padding: 15px;
-        }
+      .msg-menu-item {
+        height: 25px;
+        background-color: antiquewhite;
+      }
+    }
 
-        .msg-info-list {
+    .msg-info-list {
+      display: flex;
+      flex-direction: column;
+      background-color: aquamarine;
+    }
+  }
+}
+.msg-item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  padding: 10px 0;
 
+  background-color: rgb(245, 220, 245);
+  .msg-user-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
 
-                .msg-item {
-                        padding: 10px 0;
-                }
-
-        }
-
+    .msg-user-img {
+      font-size: 10px;
+    }
+    .msg-user-summary {
+      font-size: 10px;
+    }
+  }
+  .msg-words {
+    font-size: 15px;
+  }
 }

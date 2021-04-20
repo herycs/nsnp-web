@@ -25,7 +25,7 @@ function UserTabBar({ visible = true }) {
           icon={<TabIcon type='home' />}
         />
         <TabBar.Item
-          itemKey='found'
+          itemKey='explore'
           title='探索'
           icon={<TabIcon type='insurance' />}
         />

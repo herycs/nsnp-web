@@ -2,43 +2,67 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  background-color: #fac;
-  
-  div {
-    padding: 20px 0;
-  }
-  
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
 
   .login-plan-wrapper {
-    .login-title {
-      padding: 10px 0;
-      font-size: 1.5em;
-    }
+    padding: 30px 0;
 
-    .login-form-wrapper {
-
-      .login-account-wrapper {
-        
-        background-color: #fee;
-      }
-      .login-checkNumber-wrapper {
-        background-color: aquamarine;
+    .login-header {
+      display: flex;
+      justify-content: center;
+      .login-title {
+        font-size: 25px;
       }
     }
 
-    .user-access {
-      align-self: flex-end;
-      font-size: 0.5em;
-      color: #acc;
+    .login-form {
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+
+      .login-item {
+        display: flex;
+        flex-direction: row;
+        border-radius: 50px;
+        background-color: #f5f5f5;
+        padding: 10px;
+        margin: 5px;
+
+        .login-item-notice {
+          color: #a8a2a2;
+          padding-right: 10px;
+        }
+        .login-item-prop {
+          color: #a8a2a2;
+          font-size: #a8a2a2;
+        }
+      }
+
+      .login-button-wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        .login-button {
+          font-size: 18px;
+          
+          color: #a8a2a2;
+        }
+      }
+    }
+
+    .login-user-access {
+      display: flex;
+      justify-content: center;
+      padding-top: 300px;
+
+      .user-access {
+        font-size: 0.5em;
+        color: #acc;
+      }
     }
   }
-}
-
-.split-char {
-  font-size: 1em;
-  color: #acc;
-}
-.input-notice {
-  color:#acc;
 }
