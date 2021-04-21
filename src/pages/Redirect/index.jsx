@@ -13,7 +13,7 @@ function Redirect({ route }) {
   const map = {
     "/": "社区",
     "/home": "社区",
-    "/explore": "发现",
+    "/explore": "探索",
     "/message": "消息",
     "/me": "我的",
     "/detail": "详情",

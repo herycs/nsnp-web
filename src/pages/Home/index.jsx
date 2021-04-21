@@ -15,7 +15,7 @@ const list = [
     name: '张三',
     avatar: 'https://dummyimage.com/200x200',
     url: '/api/png/plane.jpg',
-    desc: '喜欢奥力给',
+    desc: '冲冲冲',
     content:
       '今年我们将从全世界招进20-30名天才少年，华为公司未来要拖着这个世界往前走。',
     share: 23,

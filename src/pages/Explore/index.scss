@@ -16,13 +16,15 @@
         height: 150px;
         width: 90px;
         border-radius: 5%;
-        font-size: 20px;
-        background-color: #ccc;
-      }
-    }
+        // background-color: #ccc;
+        padding: 0 5px;
 
-    .explore-title {
-      font-size: 20px;
+        .recommend-title {
+          color: rgb(206, 52, 173);
+          line-height: 150px;
+          font-size: 20px;
+        }
+      }
     }
 
     .explore-resource-wrapper {
@@ -35,34 +37,94 @@
       }
 
       .explore-resource {
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
 
-        .explore-resource-item {
-          width: 25%;
-          height: 100px;
+        .explore-head-item {
           border-radius: 15%;
+          background-color: aquamarine;
+
+          .explore-resource-title {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+
+    .explore-friend-wrapper {
+      .explore-friend-title {
+        font-size: 20px;
+        margin: 5px 0;
+      }
+      .list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .explore-friend {
+        display: flex;
+        flex-direction: column;
+
+        .explore-friend-item {
+          height: 30px;
+          border-radius: 3%;
+          margin-bottom: 10px;
+
           background-color: aquamarine;
         }
       }
     }
   }
-
-  .explore-friend-wrapper {
-    .explore-friend-title {
-      font-size: 20px;
-      margin: 5px 0;
+  .title-wrapper {
+    display: flex;
+    align-items: center;
+    .left {
+      margin-right: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      color: orange;
+      font-style: italic;
     }
-    .explore-friend {
+    .right {
+      .title {
+        font-weight: 600;
+        color: #000;
+      }
+      .desc {
+        color: #ccc;
+      }
+    }
+  }
+  .za-cell__footer {
+    color: orange;
+  }
+  .card-wrapper {
+    width: 48%;
+    padding: 16px 6px;
+    background-color: #fff;
+    border-radius: 5px;
+    .img {
+      width: 100%;
+    }
+    .title {
+      margin-bottom: 3px;
+      font-weight: 600;
+      font-size: 14px;
+      padding-left: 5px;
+    }
+
+    .user {
       display: flex;
-      flex-direction: column;
-
-      .explore-friend-item {
-        height: 30px;
-        border-radius: 3%;
-        margin-bottom: 10px;
-
-        background-color: aquamarine;
+      img {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+      }
+      .desc {
+        color: #ccc;
+        padding-left: 5px;
+        font-size: 12px;
       }
     }
   }
