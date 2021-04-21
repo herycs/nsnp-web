@@ -1,4 +1,4 @@
-import { actionTypes } from './index';
+// import { actionTypes } from './index';
 // import { fromJS } from 'immutable';
 
 // const defaultState = fromJS({
@@ -31,7 +31,7 @@ const defaultState = {
     comment: 9,
   },
 };
-
+//eslint-disable-next-line
 export default (state = defaultState, action) => {
   switch (action.type) {
     default:

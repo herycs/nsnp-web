@@ -27,6 +27,7 @@ const defaultState = fromJS({
 //   });
 // };
 
+//eslint-disable-next-line
 export default (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_WRITE_COMMENT_SHOW:

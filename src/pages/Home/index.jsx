@@ -30,7 +30,7 @@ const list = [
     desc: '喜欢奥力给',
     content:
       '今年我们将从全世界招进20-30名天才少年，华为公司未来要拖着这个世界往前走。',
-  share: 23,
+    share: 23,
     like: 99,
     comment: 9,
   },
@@ -43,12 +43,15 @@ function Home({ route }) {
   // console.log(show);
   const handleChangeWriteModal = useCallback(() => {
     dispatch(actionCreator.changeShowWirteComment(!show));
-  }, [show]);
+  }, [show, dispatch]);
 
   return (
     <div>
       <HomeTabs></HomeTabs>
-      <HomeContent handleChangeWriteModal={() => {}} list={list}></HomeContent>
+      <HomeContent
+        handleChangeWriteModal={handleChangeWriteModal}
+        list={list}
+      ></HomeContent>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Input, Cell, Message, Icon, FilePicker } from 'zarm';
+import { Input, Cell, Icon, FilePicker } from 'zarm';
 import './index.scss'
 
 function PushArticle() {
@@ -33,7 +33,6 @@ function PushArticle() {
           type='text'
           rows={5}
           placeholder='请输入内容'
-          type='text'
           value={content}
           onChange={setContent}
         />

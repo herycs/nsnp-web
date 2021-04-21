@@ -8,7 +8,7 @@ const UserInfo = ({ item, handleRouteToUser }) => {
   return (
     <div className='userinfo'>
       <div className='avatar' onClick={() => handleRouteToUser(item)}>
-        <img src={item.url}></img>
+        <img src={item.url} alt=''></img>
       </div>
       <div className='user' onClick={() => handleRouteToUser(item)}>
         <p className='name'>{item.name}</p>

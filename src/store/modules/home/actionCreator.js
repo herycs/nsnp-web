@@ -1,13 +1,13 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
-import { fromJS } from 'immutable';
+// import axios from 'axios';
+// import { fromJS } from 'immutable';
 
-const changeHomeData = (result) => ({
-  type: actionTypes.CHANGE_HOME_DATA,
-  topicList: fromJS(result.topicList),
-  articleList: fromJS(result.articleList),
-  recommendList: fromJS(result.recommendList),
-});
+// const changeHomeData = (result) => ({
+//   type: actionTypes.CHANGE_HOME_DATA,
+//   topicList: fromJS(result.topicList),
+//   articleList: fromJS(result.articleList),
+//   recommendList: fromJS(result.recommendList),
+// });
 
 export const changeShowWirteComment = (payload) => {
   return {
@@ -15,6 +15,7 @@ export const changeShowWirteComment = (payload) => {
     payload,
   };
 };
+export const func = () => 233;
 
 // const addHomeList = (list, page) => ({
 //   type: actionTypes.ADD_HOME_LIST,

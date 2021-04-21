@@ -7,9 +7,9 @@ import 'zarm/dist/zarm.css';
 import store from './store';
 import { Provider } from 'react-redux';
 
-import { Icon } from 'zarm';
+// import { Icon } from 'zarm';
 
-const ICON = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
+// const ICON = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
 function App() {
   return (

@@ -1,49 +1,47 @@
-import React, { useState } from "react";
-import "./index.scss";
-import { Badge } from "zarm";
+import React, { useState } from 'react';
+import './index.scss';
+import { Badge } from 'zarm';
 
 // import { useState } from 'react';
-import { TabIcon } from "../../assets/icon";
-
-
+import { TabIcon } from '../../assets/icon';
 
 const Options = ({ handleChangeWriteModal }) => {
   const [like, setLike] = useState(9);
   return (
-    <div className="options-wrapper">
+    <div className='options-wrapper'>
       <div
-        className="options-item"
+        className='options-item'
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
         }}
       >
-        <TabIcon type="iconfenxiang" />
+        <TabIcon type='iconfenxiang' />
         <span>分享</span>
       </div>
       <div
-        className="options-item"
+        className='options-item'
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           handleChangeWriteModal();
         }}
       >
-        <Badge shape="round" theme="primary" text="8">
-          <TabIcon type="iconpinglun" />
+        <Badge shape='round' theme='primary' text='8'>
+          <TabIcon type='iconpinglun' />
         </Badge>
         <span>评论</span>
       </div>
       <div
-        className="options-item"
+        className='options-item'
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           setLike(like + 1);
         }}
       >
-        <Badge shape="round" theme="primary" text={like}>
-          <TabIcon type="icondianzan" />
+        <Badge shape='round' theme='primary' text={like}>
+          <TabIcon type='icondianzan' />
         </Badge>
         <span>点赞</span>
       </div>
@@ -53,10 +51,10 @@ const Options = ({ handleChangeWriteModal }) => {
 
 function TrendCard({ item, handleClick, handleChangeWriteModal }) {
   return (
-    <div className="trend-wrapper" onClick={() => handleClick(item)}>
+    <div className='trend-wrapper' onClick={() => handleClick(item)}>
       <>
         <p>{item.content}</p>
-        <img src={item.url}></img>
+        <img src={item.url} alt=''></img>
         <Options handleChangeWriteModal={handleChangeWriteModal}></Options>
       </>
     </div>

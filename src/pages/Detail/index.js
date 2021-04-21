@@ -4,17 +4,8 @@ import TrendCard from '../../components/TrendCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCreator } from '../../store/modules/home';
 
-import { useState, useReducer, useRef, useCallback } from 'react';
-import {
-  Popup,
-  Cell,
-  Button,
-  Picker,
-  Toast,
-  Modal,
-  Loading,
-  Input,
-} from 'zarm';
+import { useState, useCallback } from 'react';
+import { Popup, Cell, Button, Input } from 'zarm';
 import './index.scss';
 
 const item = {
@@ -34,7 +25,7 @@ const UserInfo = ({ item }) => {
   return (
     <div className='userinfo'>
       <div className='avatar'>
-        <img src={item.url}></img>
+        <img src={item.url} alt=''></img>
       </div>
       <div className='user'>
         <p className='name'>{item.name}</p>
@@ -51,7 +42,7 @@ function Detail() {
   const dispatch = useDispatch();
   const handleChangeWriteModal = useCallback(() => {
     dispatch(actionCreator.changeShowWirteComment(!show));
-  }, [show]);
+  }, [show, dispatch]);
   const [value, setValue] = useState('');
 
   return (

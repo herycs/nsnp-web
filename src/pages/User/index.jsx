@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './index.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Toast } from 'zarm';
 
 const Header = ({ userInfo }) => {
