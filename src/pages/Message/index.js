@@ -30,15 +30,17 @@ const MessageList = [
   },
 ];
 
+// client.send()
+
 // const socket = io('ws://192.168.176.172:8080');
 // const socket = io('ws/chat/233');
-const socket = new WebSocket('ws://192.168.176.172:8080/233');
-socket.onopen = function (res) {
-  console.log(res);
-};
-socket.onerror = function (res) {
-  console.log(res);
-};
+// const socket = new WebSocket('ws://192.168.1.119:8089/');
+// socket.onopen = function (res) {
+//   console.log(res);
+// };
+// socket.onerror = function (res) {
+//   console.log(res);
+// };
 // socket.send({ name: '233' });
 // socket.onmessage = function (event) {
 //   console.log(event);

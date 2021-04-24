@@ -24,6 +24,8 @@
     "sass-loader": "^11.0.1",
     "socket.io": "^4.0.1",
     "socket.io-client": "^4.0.1",
+    "sockjs-client": "^1.5.1",
+    "stompjs": "^2.3.3",
     "web-vitals": "^1.0.1",
     "zarm": "^2.8.1"
   },

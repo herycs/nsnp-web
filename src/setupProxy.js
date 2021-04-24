@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware'); //注意写�
 module.exports = function (app) {
   app.use(
     createProxyMiddleware('/ws1', {
-      target: 'http://192.168.176.172:8080',
+      target: 'http://192.168.1.119:8090',
       pathRewrite: {
         '^/ws1': '',
       },
