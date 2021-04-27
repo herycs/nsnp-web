@@ -46,9 +46,12 @@ const MessageList = [
 //   console.log(event);
 //   console.log(event.data);
 // };
-function Message() {
+function Message({ handleSetHeader }) {
   // console.log(233);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    handleSetHeader('消息', true);
+  });
+
   return (
     <div className='msg-wrapper'>
       <div className='msg-plan-wrapper'>

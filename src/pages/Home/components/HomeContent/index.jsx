@@ -3,6 +3,7 @@ import TrendCard from '../../../../components/TrendCard';
 import { Collapse } from 'zarm';
 import './index.scss';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const UserInfo = ({ item, handleRouteToUser }) => {
   return (
@@ -70,6 +71,9 @@ function HomeContent({ list, handleChangeWriteModal }) {
         })}
         {/* </div> */}
       </Collapse>
+      <Link to='pusharticle' className='pusharticle'>
+        发布
+      </Link>
     </>
   );
 }

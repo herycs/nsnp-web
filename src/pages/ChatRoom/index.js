@@ -30,7 +30,7 @@ function ChatRoom(props) {
         subscribe(client, '/topic/public');
         subscribe(client, '/app/all');
         subscribe(client, `/topic/room/${id}`);
-        subscribe(client, `/topic/queue/${id}`);
+        subscribe(client, `/topic/user/${id}`);
       },
       (e) => {
         console.log(e);
@@ -48,7 +48,7 @@ function ChatRoom(props) {
   };
   const handleClick = () => {
     client.send(
-      `/user`,
+      `/app/chat`,
       {},
       JSON.stringify({
         sender: 'username',

@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import HomeContent from './components/HomeContent';
 import HomeTabs from './components/HomeTabs';
 import { actionCreator } from '../../store/modules/home';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 // import { connect } from 'react-redux';
 // import UserTabBar from './components/TabBar';
+import { getAllArticle } from '../../request';
 
 const list = [
   {
@@ -44,6 +45,12 @@ function Home({ route }) {
   const handleChangeWriteModal = useCallback(() => {
     dispatch(actionCreator.changeShowWirteComment(!show));
   }, [show, dispatch]);
+
+  useEffect(() => {
+    getAllArticle().then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   return (
     <div>

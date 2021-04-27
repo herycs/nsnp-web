@@ -31,3 +31,14 @@
     height: auto !important;
   }
 }
+.pusharticle {
+  position: fixed;
+  bottom: 29px;
+  left: 50%;
+  height: 56px;
+  /* line-height: 30px; */
+  transform: translate3d(-50%, 0, 0);
+  border-radius: 64px;
+  padding: 14px 13px;
+  background: #fff;
+}
