@@ -4,9 +4,11 @@ import TrendCard from '../../components/TrendCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCreator } from '../../store/modules/home';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Popup, Cell, Button, Input } from 'zarm';
 import './index.scss';
+import { useHistory } from 'react-router';
+import { getArticle, getComment } from '../../request';
 
 const item = {
   id: '2123bsa',
@@ -21,87 +23,115 @@ const item = {
   comment: 9,
 };
 
-const UserInfo = ({ item }) => {
+const UserInfo = ({ data }) => {
   return (
     <div className='userinfo'>
       <div className='avatar'>
-        <img src={item.url} alt=''></img>
+        <img src={data.avatar} alt=''></img>
       </div>
       <div className='user'>
-        <p className='name'>{item.name}</p>
-        <p className='desc'>{item.desc}</p>
+        <p className='name'>{data.nickname}</p>
+        <p className='desc'>{data.interest.slice(2, 9)}</p>
       </div>
     </div>
   );
 };
 
-function Detail() {
+function Detail(props) {
+  const id = props.location.search.slice(4);
   const show = useSelector((state) =>
     state.getIn(['home', 'showWriteCommnet'])
   );
+  const [data, setData] = useState({});
   const dispatch = useDispatch();
   const handleChangeWriteModal = useCallback(() => {
     dispatch(actionCreator.changeShowWirteComment(!show));
   }, [show, dispatch]);
   const [value, setValue] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [comment, setComment] = useState({});
+
+  useEffect(() => {
+    // console.log(props.location.search.slice(4));
+    getArticle(id).then((res) => {
+      if (res.code === 20000) {
+        setData(res.data);
+        setLoading(true);
+      }
+    });
+    getComment(id).then((res) => {
+      if (res.code === 20000) {
+        setComment(res.data);
+      }
+    });
+  }, []);
 
   return (
     <div>
-      <Collapse
-        disabled
-        animated={true}
-        multiple={true}
-        onChange={(activeKey) => {}}
-        defaultActiveKey={['0']}
-      >
-        <Collapse.Item key='0' title={<UserInfo item={item} className='88' />}>
-          <TrendCard
-            item={item}
-            handleClick={() => {}}
-            handleChangeWriteModal={handleChangeWriteModal}
-          ></TrendCard>
-        </Collapse.Item>
-      </Collapse>
-      <Comments item={item}></Comments>
-      <Popup
-        visible={show}
-        direction='bottom'
-        onMaskClick={() => handleChangeWriteModal()}
-        // afterOpen={() => console.log('打开')}
-        // afterClose={() => console.log('关闭')}
-        destroy={false}
-        mountContainer={() => document.body}
-      >
-        <div className='popup-box'>
-          {/* 输入框 */}
-
-          <Cell title='回复'>
-            <Input
-              autoHeight
-              showLength
-              maxLength={200}
-              type='text'
-              rows={3}
-              placeholder='请输入'
-              value={value}
-              onChange={setValue}
-            />
-          </Cell>
-          <Cell className='button-wrapper'>
-            <div className='zhanwei'></div>
-            <Button
-              size='xs'
-              theme='primary'
-              onClick={() => {
-                console.log('submit');
-                handleChangeWriteModal();
-              }}
+      {loading ? (
+        <div>
+          <Collapse
+            disabled
+            animated={true}
+            multiple={true}
+            onChange={(activeKey) => {}}
+            defaultActiveKey={['0']}
+          >
+            <Collapse.Item
+              key='0'
+              title={<UserInfo data={data.userInfo} className='88' />}
             >
-              提交
-            </Button>
-          </Cell>
+              <TrendCard
+                item={data.articleInfo}
+                handleClick={() => {}}
+                handleChangeWriteModal={handleChangeWriteModal}
+              ></TrendCard>
+            </Collapse.Item>
+          </Collapse>
+          <Comments id={id} item={item} data={comment}></Comments>
+          <Popup
+            visible={show}
+            direction='bottom'
+            onMaskClick={() => handleChangeWriteModal()}
+            // afterOpen={() => console.log('打开')}
+            // afterClose={() => console.log('关闭')}
+            destroy={false}
+            mountContainer={() => document.body}
+          >
+            <div className='popup-box'>
+              {/* 输入框 */}
+
+              <Cell title='回复'>
+                <Input
+                  autoHeight
+                  showLength
+                  maxLength={200}
+                  type='text'
+                  rows={3}
+                  placeholder='请输入'
+                  value={value}
+                  onChange={setValue}
+                />
+              </Cell>
+              <Cell className='button-wrapper'>
+                <div className='zhanwei'></div>
+                <Button
+                  size='xs'
+                  theme='primary'
+                  onClick={() => {
+                    console.log('submit');
+                    handleChangeWriteModal();
+                  }}
+                >
+                  提交
+                </Button>
+              </Cell>
+            </div>
+          </Popup>
         </div>
-      </Popup>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

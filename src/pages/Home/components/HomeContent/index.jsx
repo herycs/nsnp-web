@@ -6,14 +6,15 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const UserInfo = ({ item, handleRouteToUser }) => {
+  // console.log(item);
   return (
     <div className='userinfo'>
       <div className='avatar' onClick={() => handleRouteToUser(item)}>
-        <img src={item.url} alt=''></img>
+        <img src={item.avatar} alt=''></img>
       </div>
       <div className='user' onClick={() => handleRouteToUser(item)}>
-        <p className='name'>{item.name}</p>
-        <p className='desc'>{item.desc}</p>
+        <p className='name'>{item.nickname}</p>
+        <p className='desc'>{item.interest.slice(2,9)}</p>
       </div>
       <div className='zhanwei'></div>
     </div>
@@ -55,7 +56,7 @@ function HomeContent({ list, handleChangeWriteModal }) {
               key={key}
               title={
                 <UserInfo
-                  item={item}
+                  item={item.userInfo}
                   className='88'
                   handleRouteToUser={handleRouteToUser}
                 />
@@ -64,7 +65,7 @@ function HomeContent({ list, handleChangeWriteModal }) {
               <TrendCard
                 handleChangeWriteModal={handleChangeWriteModal}
                 handleClick={handleClick}
-                item={item}
+                item={item.articleInfo}
               ></TrendCard>
             </Collapse.Item>
           );

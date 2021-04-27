@@ -4,6 +4,7 @@ import { fromJS } from 'immutable';
 const defaultState = fromJS({
   showWriteCommnet: false,
 });
+
 // const defaultState = fromJS({
 //   topicList: [],
 //   articleList: [],
