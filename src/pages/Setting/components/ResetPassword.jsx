@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Cell, Input, Button, Toast } from 'zarm';
 import { changePassword, sendCode } from '../../../request';
 
-function ResetPassword({ handleSetHeader,userInfo }) {
+function ResetPassword({ handleSetHeader, userInfo }) {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [count, setCount] = useState(60);
   const [code, setCode] = useState('');
   const history = useHistory();
-  // const userInfo = useSelector((state) => {
-  //   return state.getIn(['user', 'userInfo']);
-  // });
 
   const handleClick = () => {
     if (newPassword !== password) {

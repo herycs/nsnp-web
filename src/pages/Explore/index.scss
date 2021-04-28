@@ -1,130 +1,86 @@
 .explore-wrapper {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  width: 100%;
-
-  .explore-plan-wrapper {
-    width: 100%;
-    .explore-head-wrapper {
+  padding: 0 10px;
+  .header {
+    padding: 10px 0 0 0;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .header-list {
+    padding-top: 8px;
+    display: flex;
+    // flex-wrap: wrap;
+  }
+  .mini-card {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      padding-bottom: 5px;
+    }
+    .summary {
+      text-align: center;
+      font-size: 13px;
+      color: #000;
+      width: 60px;
+      text-overflow: -o-ellipsis-lastline;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .rank {
+    padding-top: 15px;
+  }
+  .rank-list {
+    padding-top: 10px;
+    .list-header {
+      padding: 0 10px;
       display: flex;
       justify-content: space-between;
+      color: #fff;
+      background: #2dcefa;
       width: 100%;
-      padding-bottom: 10px;
-
-      .explore-head-item {
-        height: 150px;
-        width: 90px;
-        border-radius: 5%;
-        // background-color: #ccc;
-        padding: 0 5px;
-
-        .recommend-title {
-          color: rgb(206, 52, 173);
-          line-height: 150px;
-          font-size: 20px;
-        }
-      }
+      height: 40px;
+      align-items: center;
+      font-size: 13px;
+      border-radius: 8px 8px 0 0;
     }
-
-    .explore-resource-wrapper {
-      background-color: aqua;
-
-      .explore-resource-title {
-        padding: 5px 0;
-        font-size: 20px;
-        background-color: bisque;
-      }
-
-      .explore-resource {
-        // display: flex;
-        // justify-content: space-between;
-
-        .explore-head-item {
-          border-radius: 15%;
-          background-color: aquamarine;
-
-          .explore-resource-title {
-            font-size: 30px;
+    .list-content {
+      .list-item {
+        background: #fff;
+        padding: 20px;
+        height: 80px;
+        width: 100%;
+        // background-color: pink;
+        // margin-bottom: 1px;
+        display: flex;
+        justify-content: space-between;
+        .count {
+          font-weight: 600;
+          margin-right: 10px;
+          font-size: 19px;
+          font-style: italic;
+        }
+        .name-wrap {
+          display: flex;
+          flex-direction: column;
+          .name {
+            // font-weight: 600;
+          }
+          .desc {
+            padding-top: 5px;
+            font-size: 14px;
+            color: #999;
           }
         }
-      }
-    }
-
-    .explore-friend-wrapper {
-      .explore-friend-title {
-        font-size: 20px;
-        margin: 5px 0;
-      }
-      .list {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-      }
-      .explore-friend {
-        display: flex;
-        flex-direction: column;
-
-        .explore-friend-item {
-          height: 30px;
-          border-radius: 3%;
-          margin-bottom: 10px;
-
-          background-color: aquamarine;
-        }
-      }
-    }
-  }
-  .title-wrapper {
-    display: flex;
-    align-items: center;
-    .left {
-      margin-right: 8px;
-      font-size: 18px;
-      font-weight: 600;
-      color: orange;
-      font-style: italic;
-    }
-    .right {
-      .title {
-        font-weight: 600;
-        color: #000;
-      }
-      .desc {
-        color: #ccc;
-      }
-    }
-  }
-  .za-cell__footer {
-    color: orange;
-  }
-  .card-wrapper {
-    width: 48%;
-    padding: 16px 6px;
-    background-color: #fff;
-    border-radius: 5px;
-    .img {
-      width: 100%;
-    }
-    .title {
-      margin-bottom: 3px;
-      font-weight: 600;
-      font-size: 14px;
-      padding-left: 5px;
-    }
-
-    .user {
-      display: flex;
-      img {
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-      }
-      .desc {
-        color: #ccc;
-        padding-left: 5px;
-        font-size: 12px;
       }
     }
   }

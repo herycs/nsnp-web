@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import React from 'react';
 import { useHistory } from 'react-router';
 import { Cell } from 'zarm';
-import Logout from './components/Logout';
 
 function Setting({ handleSetHeader, userInfo }) {
   const history = useHistory();
-  // const userInfo = useSelector((state) => {
-  //   return state.getIn(['user', 'userInfo']);
-  // });
+
   return (
     <div>
       <Cell

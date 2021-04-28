@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './index.scss';
-// import { useSelector } from 'react-redux';
 import { Toast } from 'zarm';
 import { baseUrl } from '../../request';
 import { useHistory } from 'react-router';
@@ -18,7 +17,8 @@ const Header = ({ userInfo }) => {
           </div>
           <p className='username'>{userInfo.nickname}</p>
           <p className='desc' onClick={() => history.push('/change_interest')}>
-            {userInfo.interest ? userInfo.interest.slice(0, 10) : '' + '...'}
+            {userInfo.interest ? userInfo.interest.slice(0, 10) : ''}
+            {'...'}
           </p>
         </div>
         <div className='right'>

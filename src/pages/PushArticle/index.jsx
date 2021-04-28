@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { useState ,useCallback} from 'react';
 import { useHistory } from 'react-router';
 import {
   Cell,
@@ -16,7 +16,7 @@ import './index.scss';
 
 const MAX_FILES_COUNT = 1;
 
-const SINGLE_DATA = [{ value: '999', label: '添加新标签' }];
+// const SINGLE_DATA = [{ value: '999', label: '添加新标签' }];
 
 const onBeforeSelect = () => {
   // alert('执行 onBeforeSelect 方法');
@@ -37,7 +37,7 @@ function PushArticle({ handleSetHeader }) {
     { value: '999', label: '添加新标签' },
   ]);
 
-  const getChannelList = () => {
+  const getChannelList = useCallback(() => {
     getChannel().then((res) => {
       console.log(res);
       setChannel([
@@ -47,7 +47,7 @@ function PushArticle({ handleSetHeader }) {
         }),
       ]);
     });
-  };
+  }, [channel]);
   const handleAddChannel = () => {
     let data = { name: newChannel, status: 1 };
     addChannel(data).then((res) => {
@@ -66,7 +66,7 @@ function PushArticle({ handleSetHeader }) {
   };
   useEffect(() => {
     getChannelList();
-  }, []);
+  }, [getChannelList]);
   const onSelect = (selFiles) => {
     // console.log(selFiles[0]);
     const newFiles = files.concat(selFiles);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { login } from '../../request';
 import './index.scss';
 import { Input, Toast } from 'zarm';

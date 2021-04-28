@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
-import { Cell, Button, Select, Toast } from 'zarm';
-import { baseUrl, getUserInfo } from '../../../request';
+import React, { useEffect } from 'react';
+import { Cell } from 'zarm';
+import { baseUrl } from '../../../request';
 import './index.scss';
 
-function AccountSecurity({ history, handleSetHeader ,userInfo}) {
-  const [visible, setVisible] = useState(false);
-
-  // const userInfo = useSelector((state) => {
-  //   return state.getIn(['user', 'userInfo']);
-  // });
-
+function AccountSecurity({ history, handleSetHeader, userInfo }) {
   useEffect(() => {
     handleSetHeader('账号安全', true);
   });
   return (
     <div className='ass-wrapper'>
-      <img className='avatar' src={baseUrl + userInfo.avatar}></img>
+      <img className='avatar' alt='' src={baseUrl + userInfo.avatar}></img>
       <Cell
         title={
           <div>

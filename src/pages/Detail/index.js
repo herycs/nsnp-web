@@ -7,7 +7,6 @@ import { actionCreator } from '../../store/modules/home';
 import { useState, useCallback, useEffect } from 'react';
 import { Popup, Cell, Button, Input } from 'zarm';
 import './index.scss';
-import { useHistory } from 'react-router';
 import { baseUrl, getArticle, getComment } from '../../request';
 
 const item = {
@@ -64,7 +63,15 @@ function Detail(props) {
         setComment(res.data);
       }
     });
-  }, []);
+  }, [id]);
+
+  const handleRender = useCallback(() => {
+    getComment(id).then((res) => {
+      if (res.code === 20000) {
+        setComment(res.data);
+      }
+    });
+  }, [id]);
 
   return (
     <div>
@@ -88,7 +95,7 @@ function Detail(props) {
               ></TrendCard>
             </Collapse.Item>
           </Collapse>
-          <Comments id={id} item={item} data={comment}></Comments>
+          <Comments id={id} item={item} data={comment} handleRender={handleRender}></Comments>
           <Popup
             visible={show}
             direction='bottom'

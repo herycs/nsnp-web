@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Cell, Button, Select } from 'zarm';
+import { Modal, Cell, Button } from 'zarm';
 
 function Logout({ history, handleSetHeader }) {
   const [visible, setVisible] = useState(false);

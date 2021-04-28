@@ -19,7 +19,8 @@ export const getComment = (id) =>
 export const addComment = (data) =>
   axiosInstance.post('/article/article/comment', { ...data, uid: userid });
 
-export const baseUrl = 'http://192.168.76.172:9004';
+// export const baseUrl = 'http://192.168.76.172:9004';
+export const baseUrl = 'http://192.168.1.119:9004';
 
 export const getUserInfo = () => axiosInstance.get('/user/user/' + userid);
 
@@ -31,3 +32,13 @@ export const sendCode = (phoneNumber) =>
 
 export const changePassword = ({ code, data }) =>
   axiosInstance.post('/user/user/pass/' + code, data);
+
+export const getGroup = () =>
+  axiosInstance.get('/article/column/in/limit/' + userid);
+
+export const getRankList = () => axiosInstance.get('/article/column/hot');
+
+export const setThumbUp = (id) =>
+  axiosInstance.get('/article/article/thumbup/' + id);
+export const setThumbDown = (id) =>
+  axiosInstance.get('/article/article/thumbdown/' + id);

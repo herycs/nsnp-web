@@ -3,11 +3,15 @@ import './index.scss';
 import { Input, Button } from 'zarm';
 import { addComment, baseUrl } from '../../request';
 
-function Comments({ item, data, id }) {
+function Comments({ item, data, id, handleRender }) {
   const [close, setClose] = useState(true);
   const [content, setContent] = useState('');
   const handleSubmit = () => {
-    addComment({ content, articleid: id }).then((res) => {});
+    addComment({ content, articleid: id }).then((res) => {
+      if (res.code === 20000) {
+        handleRender();
+      }
+    });
   };
   return (
     <div className='comments-wrapper' style={{ paddingBottom: 100 }}>
@@ -15,43 +19,44 @@ function Comments({ item, data, id }) {
         <span>评论</span>
         <span>排序方式</span>
       </div>
-      {data.map((item, index) => {
-        const { userInfo = {}, comment = {} } = item;
+      {Array.isArray(data) &&
+        data.map((item, index) => {
+          const { userInfo = {}, comment = {} } = item;
 
-        return (
-          <div key={index}>
-            <div className='content'>
-              <div className='left'>
-                <img src={baseUrl + userInfo.avatar} alt='' />
+          return (
+            <div key={index}>
+              <div className='content'>
+                <div className='left'>
+                  <img src={baseUrl + userInfo.avatar} alt='' />
+                </div>
+                <div className='right'>
+                  <span className='name'>{userInfo.name}</span>
+                  <span className='time'>{comment.ctime}</span>
+                  <span className='content1'>{comment.content}</span>
+                </div>
+                <div
+                  className='close'
+                  onClick={() => {
+                    setClose(true);
+                  }}
+                >
+                  *
+                </div>
               </div>
-              <div className='right'>
-                <span className='name'>{userInfo.name}</span>
-                <span className='time'>{comment.ctime}</span>
-                <span className='content1'>{comment.content}</span>
-              </div>
-              <div
-                className='close'
-                onClick={() => {
-                  setClose(true);
-                }}
-              >
-                *
+              <div className={close ? 'list list-close' : 'list'}>
+                <div className='zw'></div>
+                <div className='p-wrapper'>
+                  <p>
+                    <span>张三</span>
+                    <span>回复</span>
+                    <span>李四</span>
+                    <span>今天天气真好</span>
+                  </p>
+                </div>
               </div>
             </div>
-            <div className={close ? 'list list-close' : 'list'}>
-              <div className='zw'></div>
-              <div className='p-wrapper'>
-                <p>
-                  <span>张三</span>
-                  <span>回复</span>
-                  <span>李四</span>
-                  <span>今天天气真好</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
       <div
         style={{
           position: 'fixed',

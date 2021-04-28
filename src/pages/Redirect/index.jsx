@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { renderRoutes } from 'react-router-config';
-import { Toast } from 'zarm';
 import Header from '../../components/Header';
 import UserTabBar from '../../components/TabBar';
-import { getUserInfo } from '../../request';
 import { actionCreator as userActionCreator } from '../../store/modules/user';
 const arr = ['/', '/home', '/explore', '/me', '/message'];
 const map = {
@@ -37,7 +35,7 @@ function Redirect({ route, ...props }) {
   });
   useEffect(() => {
     dispatch(userActionCreator.getUserData());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (arr.indexOf(pathname) === -1) {

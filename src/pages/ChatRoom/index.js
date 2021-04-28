@@ -19,7 +19,7 @@ function ChatRoom(props) {
     client.subscribe(url, (res) => {
       // console.log(res);
       const data = JSON.parse(res.body);
-      console.log(data);
+      console.log(data, 'data');
     });
   };
 

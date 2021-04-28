@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
 import './index.scss';
 import { TabBar, Cell } from 'zarm';
 import { useHistory } from 'react-router';

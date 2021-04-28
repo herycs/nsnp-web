@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import './index.scss';
-import { Badge } from 'zarm';
 
 // import { useState } from 'react';
 import { TabIcon } from '../../assets/icon';
 import { baseUrl } from '../../request';
 
 const Options = ({ item, handleChangeWriteModal }) => {
-  const [like, setLike] = useState(9);
+  // console.log(item);
+  const [count1] = useState(0);
+  const [count2] = useState(0);
+  const [count3, setCount3] = useState(0);
   return (
     <div className='options-wrapper'>
       <div
@@ -15,10 +17,13 @@ const Options = ({ item, handleChangeWriteModal }) => {
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
+          // setCount1((e) => {
+          //   return e ? 0 : 1;
+          // });
         }}
       >
         <TabIcon type='iconfenxiang' />
-        <span>分享</span>
+        <span>{+item.share + count1}</span>
       </div>
       <div
         className='options-item'
@@ -26,25 +31,31 @@ const Options = ({ item, handleChangeWriteModal }) => {
           e.preventDefault();
           e.stopPropagation();
           handleChangeWriteModal();
+          // setCount2((e) => {
+          //   return e ? 0 : 1;
+          // });
         }}
       >
-        <Badge shape='round' theme='primary' text='8'>
-          <TabIcon type='iconpinglun' />
-        </Badge>
-        <span>评论</span>
+        <TabIcon type='iconpinglun' />
+        <span>{+item.comment + count2}</span>
       </div>
       <div
         className='options-item'
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          setLike(like + 1);
+          setCount3((e) => {
+            return e ? 0 : 1;
+          });
         }}
       >
-        <Badge shape='round' theme='primary' text={like}>
-          <TabIcon type='icondianzan' />
-        </Badge>
-        <span>点赞</span>
+        <TabIcon
+          type='iconzan'
+          style={{ color: count3 ? 'rgb(20, 158, 255)' : '' }}
+        />
+        <span style={{ color: count3 ? 'rgb(20, 158, 255)' : '' }}>
+          {+item.thumbup + count3}
+        </span>
       </div>
     </div>
   );
@@ -54,8 +65,13 @@ function TrendCard({ item, handleClick, handleChangeWriteModal }) {
   return (
     <div className='trend-wrapper' onClick={() => handleClick(item)}>
       <>
-        <p>{item.content}</p>
-        <img src={baseUrl+item.image} alt=''></img>
+        {/* <p></p> */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: item.content,
+          }}
+        ></div>
+        <img src={baseUrl + item.image} alt=''></img>
         <Options
           item={item}
           handleChangeWriteModal={handleChangeWriteModal}

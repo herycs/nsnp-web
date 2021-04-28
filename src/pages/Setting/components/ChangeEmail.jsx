@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Modal, Cell, Button, Select, Input, Toast } from 'zarm';
+import {  Cell, Button, Input, Toast } from 'zarm';
 import { changeUserInfo } from '../../../request';
 import { actionCreator as userActionCreator } from '../../../store/modules/user';
 
 function ChangeEmail({ history, handleSetHeader, userInfo }) {
-  // const userInfo = useSelector((state) => {
-  //   return state.getIn(['user', 'userInfo']);
-  // });
+ 
   const [email, setEmail] = useState('');
 
   const dispatch = useDispatch();

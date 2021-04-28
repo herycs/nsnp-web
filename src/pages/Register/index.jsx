@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './index.scss';
-import { Input, Message, Toast } from 'zarm';
-import { register,  } from '../../request';
+import { Input, Toast } from 'zarm';
+import { register } from '../../request';
 import { useHistory } from 'react-router';
 
 function Register() {
-  const [nickname, setNickname] = useState('');
+  const [nickname] = useState('');
   const [mobile, setMobile] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
