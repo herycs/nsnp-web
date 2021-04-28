@@ -1,9 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import './index.scss';
 import { TabBar, Cell } from 'zarm';
 import { useHistory } from 'react-router';
 import { TabIcon } from '../../assets/icon';
+import { baseUrl } from '../../request';
 
 const options = [
   { key: 0, title: '空间', icon: 'iconapprovedicon' },
@@ -26,16 +27,16 @@ const recommend = [
   { key: 3, title: '', icon: 'iconlishij' },
 ];
 
-function Mine() {
+function Mine({userInfo}) {
   const history = useHistory();
-  const userInfo = useSelector((state) => {
-    return state.getIn(['user', 'userInfo']);
-  });
+  // const userInfo = useSelector((state) => {
+  //   return state.getIn(['user', 'userInfo']);
+  // });
   return (
     <div className='mine-wrapper'>
       <div className='userinfo'>
         <img
-          src={userInfo.avatar}
+          src={baseUrl + userInfo.avatar}
           alt=''
           onClick={() => history.push('/user?id=' + userInfo.id)}
         />

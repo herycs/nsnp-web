@@ -12,7 +12,8 @@ function Header({ title = '首页', showBack = false, showSetting = true }) {
           showBack ? (
             <Icon
               type='arrow-left'
-              theme='primary'
+              // theme='primary'
+              style={{ color: 'rgba(0,0,0,.6)' }}
               onClick={() => window.history.back()}
             />
           ) : (

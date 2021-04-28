@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import './index.scss';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Toast } from 'zarm';
+import { baseUrl } from '../../request';
+import { useHistory } from 'react-router';
 
 const Header = ({ userInfo }) => {
   const [flag, setFlag] = useState(false);
   const [optionFlag, setOptionFlag] = useState(false);
+  const history = useHistory();
   return (
     <div className='header'>
       <div className='d'>
         <div className='left'>
           <div className='avatar'>
-            <img src={userInfo.avatar} alt='' />
+            <img src={baseUrl + userInfo.avatar} alt='' />
           </div>
-          <p className='username'>{userInfo.name}</p>
+          <p className='username'>{userInfo.nickname}</p>
+          <p className='desc' onClick={() => history.push('/change_interest')}>
+            {userInfo.interest ? userInfo.interest.slice(0, 10) : '' + '...'}
+          </p>
         </div>
         <div className='right'>
           <span
@@ -107,10 +113,10 @@ const List = () => {
   );
 };
 
-function User() {
-  const userInfo = useSelector((state) => {
-    return state.getIn(['user', 'userInfo']);
-  });
+function User({ userInfo }) {
+  // const userInfo = useSelector((state) => {
+  //   return state.getIn(['user', 'userInfo']);
+  // });
   return (
     <div className='user-wrapper'>
       <Header userInfo={userInfo}></Header>

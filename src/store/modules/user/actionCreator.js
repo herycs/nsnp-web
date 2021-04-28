@@ -1,17 +1,25 @@
-// import * as actionTypes from './actionTypes';
-// import axios from 'axios';
-// import { fromJS } from 'immutable';
+import { getUserInfo } from '../../../request';
+import * as actionTypes from './actionTypes';
 
-// const changeHomeData = (result) => ({
-//   type: actionTypes.CHANGE_HOME_DATA,
-//   topicList: fromJS(result.topicList),
-//   articleList: fromJS(result.articleList),
-//   recommendList: fromJS(result.recommendList),
-// });
+export const getUserData = (payload) => {
+  return (dispatch) => {
+    getUserInfo()
+      .then((res) => {
+        console.log(res);
+        if (res.code === 20000) {
+          const action = setUserData(res.data);
+          dispatch(action);
+        }
+      })
+      .catch((e) => {
+        console.log(e, '出现错误');
+      });
+  };
+};
 
-export const getUserData = (id) => {
+export const setUserData = (payload) => {
   return {
-    // type: actionTypes.TOGGLE_WRITE_COMMENT_SHOW,
-    // payload,
+    type: actionTypes.CHANGE_USER_DATA,
+    payload,
   };
 };

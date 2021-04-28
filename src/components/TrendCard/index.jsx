@@ -4,6 +4,7 @@ import { Badge } from 'zarm';
 
 // import { useState } from 'react';
 import { TabIcon } from '../../assets/icon';
+import { baseUrl } from '../../request';
 
 const Options = ({ item, handleChangeWriteModal }) => {
   const [like, setLike] = useState(9);
@@ -54,7 +55,7 @@ function TrendCard({ item, handleClick, handleChangeWriteModal }) {
     <div className='trend-wrapper' onClick={() => handleClick(item)}>
       <>
         <p>{item.content}</p>
-        <img src={item.image} alt=''></img>
+        <img src={baseUrl+item.image} alt=''></img>
         <Options
           item={item}
           handleChangeWriteModal={handleChangeWriteModal}

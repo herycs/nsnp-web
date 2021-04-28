@@ -4,19 +4,26 @@ import { Collapse } from 'zarm';
 import './index.scss';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../../../request';
 
-const UserInfo = ({ item, handleRouteToUser }) => {
+const UserInfo = ({ item = {}, handleRouteToUser }) => {
   // console.log(item);
   return (
-    <div className='userinfo'>
-      <div className='avatar' onClick={() => handleRouteToUser(item)}>
-        <img src={item.avatar} alt=''></img>
-      </div>
-      <div className='user' onClick={() => handleRouteToUser(item)}>
-        <p className='name'>{item.nickname}</p>
-        <p className='desc'>{item.interest.slice(2,9)}</p>
-      </div>
-      <div className='zhanwei'></div>
+    <div>
+      {!item ? (
+        ''
+      ) : (
+        <div className='userinfo'>
+          <div className='avatar' onClick={() => handleRouteToUser(item)}>
+            <img src={baseUrl + item.avatar} alt=''></img>
+          </div>
+          <div className='user' onClick={() => handleRouteToUser(item)}>
+            <p className='name'>{item.nickname}</p>
+            <p className='desc'>{item.interest.slice(2, 9)}</p>
+          </div>
+          <div className='zhanwei'></div>
+        </div>
+      )}
     </div>
   );
 };

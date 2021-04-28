@@ -1,0 +1,14 @@
+.ass-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .za-cell__title{
+    font-size: 14px;
+
+  }
+  .avatar {
+    margin: 40px auto;
+    width: 85px;
+    height: 85px;
+  }
+}

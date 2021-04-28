@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { renderRoutes } from 'react-router-config';
+import { Toast } from 'zarm';
 import Header from '../../components/Header';
 import UserTabBar from '../../components/TabBar';
-
+import { getUserInfo } from '../../request';
+import { actionCreator as userActionCreator } from '../../store/modules/user';
 const arr = ['/', '/home', '/explore', '/me', '/message'];
 const map = {
   '/': '社区',
@@ -28,12 +30,14 @@ function Redirect({ route, ...props }) {
   const pathname = history.location.pathname;
 
   const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log(history);
-  //   // console.log(route, 'redirect');
-  //   // 判断用户身份
-  // }, [route]);
+  const userInfo = useSelector((state) => {
+    return state.getIn(['user', 'userInfo']);
+  });
+  useEffect(() => {
+    dispatch(userActionCreator.getUserData());
+  }, []);
 
   useEffect(() => {
     if (arr.indexOf(pathname) === -1) {
@@ -65,7 +69,10 @@ function Redirect({ route, ...props }) {
         ''
       )}
 
-      {renderRoutes(route.routes, { handleSetHeader: handleSetHeader })}
+      {renderRoutes(route.routes, {
+        handleSetHeader,
+        userInfo,
+      })}
       <UserTabBar visible={visible}></UserTabBar>
     </div>
   );

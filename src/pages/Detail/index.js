@@ -8,7 +8,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { Popup, Cell, Button, Input } from 'zarm';
 import './index.scss';
 import { useHistory } from 'react-router';
-import { getArticle, getComment } from '../../request';
+import { baseUrl, getArticle, getComment } from '../../request';
 
 const item = {
   id: '2123bsa',
@@ -27,7 +27,7 @@ const UserInfo = ({ data }) => {
   return (
     <div className='userinfo'>
       <div className='avatar'>
-        <img src={data.avatar} alt=''></img>
+        <img src={baseUrl + data.avatar} alt=''></img>
       </div>
       <div className='user'>
         <p className='name'>{data.nickname}</p>

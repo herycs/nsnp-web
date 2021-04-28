@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './index.scss';
 import { Input, Button } from 'zarm';
-import { addComment } from '../../request';
+import { addComment, baseUrl } from '../../request';
 
 function Comments({ item, data, id }) {
   const [close, setClose] = useState(true);
@@ -22,7 +22,7 @@ function Comments({ item, data, id }) {
           <div key={index}>
             <div className='content'>
               <div className='left'>
-                <img src={userInfo.avatar} alt='' />
+                <img src={baseUrl + userInfo.avatar} alt='' />
               </div>
               <div className='right'>
                 <span className='name'>{userInfo.name}</span>

@@ -11,6 +11,11 @@ import Register from '../pages/Register';
 import PushArticle from '../pages/PushArticle';
 import Share from '../pages/Share';
 import ChatRoom from '../pages/ChatRoom';
+import Logout from '../pages/Setting/components/Logout';
+import AccountSecurity from '../pages/Setting/components/AccountSecurity';
+import ChangeEmail from '../pages/Setting/components/ChangeEmail';
+import ResetPassword from '../pages/Setting/components/ResetPassword';
+import ChangeInterest from '../pages/User/ChangeInterest';
 
 const routes = [
   {
@@ -65,6 +70,27 @@ const routes = [
         path: '/message/:id',
         component: ChatRoom,
       },
+      {
+        path: '/logout',
+        component: Logout,
+      },
+      {
+        path: '/assess',
+        component: AccountSecurity,
+      },
+      {
+        path: '/change_email',
+        component: ChangeEmail,
+      },
+      {
+        path: '/reset_passowrd',
+        component: ResetPassword,
+      },
+      {
+        path: '/change_interest',
+        component: ChangeInterest,
+      },
+
       // {
       //   path: '/child/:id',
       //   component: Child,
