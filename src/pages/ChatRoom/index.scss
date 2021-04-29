@@ -1,2 +1,39 @@
 .chat-room-wrapper {
+  padding-bottom: 40px;
+  .chat-list {
+    .chat-item {
+      display: flex;
+      text-align: right;
+      padding: 10px;
+      // margin: 10px 0;
+      .avatar {
+        width: 40px;
+        height: 40px;
+      }
+      .content {
+        padding-top: 10px;
+        max-width: 60%;
+        padding: 10px 20px;
+        line-height: 22px;
+        background: #fff;
+        border-radius: 15px;
+      }
+    }
+    .fl-left {
+      flex-direction: row-reverse;
+      text-align: left;
+      .content {
+        margin-right: 20px;
+      }
+    }
+  }
+  .input-wrapper {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    padding: 0 20px;
+    background: #ebecf0;
+    // background: pink;
+  }
 }

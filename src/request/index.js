@@ -21,6 +21,8 @@ export const addComment = (data) =>
 
 // export const baseUrl = 'http://192.168.76.172:9004';
 export const baseUrl = 'http://192.168.1.119:9004';
+export const chatUrl = 'http://192.168.1.119:8090/nsnp'
+
 
 export const getUserInfo = () => axiosInstance.get('/user/user/' + userid);
 
@@ -44,3 +46,6 @@ export const setThumbDown = (id) =>
   axiosInstance.get('/article/article/thumbdown/' + id);
 
 export const getChatList = () => axiosInstance.get('/user/chat/list/' + userid);
+
+export const recordChatHistory = (id) =>
+  axiosInstance.get(`/user/chat/record/${userid}/${id}`);

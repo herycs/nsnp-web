@@ -3,6 +3,7 @@ import './index.scss';
 import io from 'socket.io-client';
 import axios from 'axios';
 import { baseUrl, getChatList } from '../../request';
+import { useHistory } from 'react-router';
 
 const MessageList = [
   {
@@ -33,6 +34,7 @@ const MessageList = [
 // };
 function Message({ handleSetHeader }) {
   const [chatList, setChatList] = useState([]);
+  const history = useHistory();
   useEffect(() => {
     handleSetHeader('消息', true);
   });
@@ -53,7 +55,13 @@ function Message({ handleSetHeader }) {
         </div>
         {chatList.map((item, index) => {
           return (
-            <div className='msg-item' key={index}>
+            <div
+              className='msg-item'
+              key={index}
+              onClick={() => {
+                history.push('/message/' + item.uid);
+              }}
+            >
               <div className='msg-info'>
                 <div
                   className='msg-user-img'
