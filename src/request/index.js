@@ -42,3 +42,5 @@ export const setThumbUp = (id) =>
   axiosInstance.get('/article/article/thumbup/' + id);
 export const setThumbDown = (id) =>
   axiosInstance.get('/article/article/thumbdown/' + id);
+
+export const getChatList = () => axiosInstance.get('/user/chat/list/' + userid);

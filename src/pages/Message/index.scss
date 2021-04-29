@@ -30,9 +30,10 @@
 .msg-item {
   display: flex;
   flex-direction: row;
-  padding: 10px 0;
+  padding: 15px 0;
+  border-bottom: .5px solid #ccc;
 
-  background-color: rgb(245, 220, 245);
+  // background-color: rgb(245, 220, 245);
 
   .msg-info {
     display: flex;
