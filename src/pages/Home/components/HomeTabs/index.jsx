@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tabs, Loading } from 'zarm';
 
 const { Panel } = Tabs;
 
 const HomeTabs = () => {
   const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <Tabs

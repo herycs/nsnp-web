@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { Toast } from 'zarm';
+import { baseUrl } from './const';
 
 const axiosInstance = axios.create({
-  // baseURL: 'http://192.168.43.172:9004/',
-  // baseURL: 'http://192.168.76.172:9004/',
-  baseURL: 'http://localhost:9004/',
+  baseURL: baseUrl,
   timeout: 2500,
-  // headers: {'X-Custom-Header': 'foobar'}
 });
 
 const token = localStorage.getItem('token');

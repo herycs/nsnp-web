@@ -1,6 +1,9 @@
-import axiosInstance from "./axios";
+import { baseUrl, chatUrl } from './const';
 
-const IP = "localhost";
+import axiosInstance from './axios';
+// 
+export { baseUrl, chatUrl };
+
 
 const userid = localStorage.getItem("userid");
 
@@ -33,8 +36,6 @@ export const setThumbUp = (id) =>
 export const setThumbDown = (id) =>
   axiosInstance.get("/article/article/thumbdown/" + id);
 
-export const baseUrl = "http://" + IP + ":9004";
-export const chatUrl = "http://" + IP + ":8090/nsnp";
 
 /**
  * 探索页
@@ -42,6 +43,7 @@ export const chatUrl = "http://" + IP + ":8090/nsnp";
 export const getGroup = () =>
   axiosInstance.get("/article/column/in/limit/" + userid);
 export const getRankList = () => axiosInstance.get("/article/column/hot");
+export const getUserInfo = () => axiosInstance.get('/user/user/info/' + userid);
 
 /**
  * 聊天模块
@@ -55,7 +57,6 @@ export const recordChatHistory = (id) =>
 /**
  * 【我的】模块
  */
-export const getUserInfo = () => axiosInstance.get("/user/user/info/" + userid);
 export const changeUserInfo = (data) =>
   axiosInstance.post("/user/user/update", data);
 export const sendCode = (phoneNumber) =>
@@ -91,3 +92,7 @@ export const updateResourceList = (id, data) =>
   axiosInstance.post("/articel/resource/update/" + id, data);
 export const delRessource = (id) =>
   axiosInstance.delete("/articel/resource/del/" + id);
+
+
+export const getUserVisit = () =>
+  axiosInstance.get(`/article/column/visit/${userid}`);
