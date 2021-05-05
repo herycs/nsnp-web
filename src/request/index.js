@@ -1,4 +1,7 @@
 import axiosInstance from './axios';
+import { baseUrl, chatUrl } from './const';
+
+export { baseUrl, chatUrl };
 
 const userid = localStorage.getItem('userid');
 
@@ -19,12 +22,7 @@ export const getComment = (id) =>
 export const addComment = (data) =>
   axiosInstance.post('/article/article/comment', { ...data, uid: userid });
 
-// export const baseUrl = 'http://192.168.76.172:9004';
-export const baseUrl = 'http://192.168.1.119:9004';
-export const chatUrl = 'http://192.168.1.119:8090/nsnp'
-
-
-export const getUserInfo = () => axiosInstance.get('/user/user/' + userid);
+export const getUserInfo = () => axiosInstance.get('/user/user/info/' + userid);
 
 export const changeUserInfo = (data) =>
   axiosInstance.post('/user/user/update', data);
@@ -49,3 +47,6 @@ export const getChatList = () => axiosInstance.get('/user/chat/list/' + userid);
 
 export const recordChatHistory = (id) =>
   axiosInstance.get(`/user/chat/record/${userid}/${id}`);
+
+export const getUserVisit = () =>
+  axiosInstance.get(`/article/column/visit/${userid}`);

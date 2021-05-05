@@ -16,6 +16,7 @@ import AccountSecurity from '../pages/Setting/components/AccountSecurity';
 import ChangeEmail from '../pages/Setting/components/ChangeEmail';
 import ResetPassword from '../pages/Setting/components/ResetPassword';
 import ChangeInterest from '../pages/User/ChangeInterest';
+import Discuss from '../pages/Discuss';
 
 const routes = [
   {
@@ -90,7 +91,10 @@ const routes = [
         path: '/change_interest',
         component: ChangeInterest,
       },
-
+      {
+        path: '/discuss/:id',
+        component: Discuss,
+      },
       // {
       //   path: '/child/:id',
       //   component: Child,

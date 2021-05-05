@@ -57,26 +57,27 @@ function HomeContent({ list, handleChangeWriteModal }) {
         defaultActiveKey={['0', '1', '2', '3']}
       >
         {/* <div className='content'> */}
-        {list.map((item, key) => {
-          return (
-            <Collapse.Item
-              key={key}
-              title={
-                <UserInfo
-                  item={item.userInfo}
-                  className='88'
-                  handleRouteToUser={handleRouteToUser}
-                />
-              }
-            >
-              <TrendCard
-                handleChangeWriteModal={handleChangeWriteModal}
-                handleClick={handleClick}
-                item={item.articleInfo}
-              ></TrendCard>
-            </Collapse.Item>
-          );
-        })}
+        {list &&
+          list.map((item, key) => {
+            return (
+              <Collapse.Item
+                key={key}
+                title={
+                  <UserInfo
+                    item={item.userInfo}
+                    className='88'
+                    handleRouteToUser={handleRouteToUser}
+                  />
+                }
+              >
+                <TrendCard
+                  handleChangeWriteModal={handleChangeWriteModal}
+                  handleClick={handleClick}
+                  item={item.articleInfo}
+                ></TrendCard>
+              </Collapse.Item>
+            );
+          })}
         {/* </div> */}
       </Collapse>
       <Link to='pusharticle' className='pusharticle'>

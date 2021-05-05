@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { Carousel } from 'zarm';
-import { baseUrl, getGroup, getRankList } from '../../request';
+import { baseUrl, getGroup, getRankList, getUserVisit } from '../../request';
 import './index.scss';
 
 const MiniCard = ({ item }) => {
+  const history = useHistory();
   return (
-    <div className='mini-card'>
+    <div
+      className='mini-card'
+      onClick={() => {
+        history.push(`/discuss/${item.id}`);
+      }}
+    >
       <img
         src={!item.url ? baseUrl + item.img : item.url}
         alt=''
@@ -23,6 +30,9 @@ function Explore() {
   };
   const [groupList, setGroupList] = useState([]);
   const [rankList, setRankList] = useState([]);
+  const [historyList, setHistoryList] = useState([]);
+  const [cur, setCur] = useState(0);
+
   useEffect(() => {
     getGroup().then((res) => {
       if (res.code === 20000) {
@@ -31,9 +41,13 @@ function Explore() {
       }
     });
     getRankList().then((res) => {
-      console.log(res.data);
       if (res.code === 20000) {
         setRankList(res.data);
+      }
+    });
+    getUserVisit().then((res) => {
+      if (res.code === 20000) {
+        setHistoryList(res.data);
       }
     });
   }, []);
@@ -83,11 +97,39 @@ function Explore() {
   return (
     <div className='explore-wrapper'>
       <div className='header'>
-        <p className='title'>我加入的</p>
-        <div className='header-list'>
-          {groupList.map((item, index) => (
-            <MiniCard item={item} key={index}></MiniCard>
-          ))}
+        <div style={{ display: 'flex', transition: 'all .6s ' }}>
+          <p
+            className='title'
+            style={{
+              marginRight: 30,
+              color: cur !== 0 ? '#ccc' : '#000',
+              fontWeight: cur !== 0 ? 200 : '600',
+              fontSize: cur !== 0 ? 13 : 14,
+            }}
+            onClick={() => setCur(0)}
+          >
+            我加入的
+          </p>
+          <p
+            className='title'
+            style={{
+              color: cur !== 1 ? '#ccc' : '#000',
+              fontWeight: cur !== 1 ? 200 : 600,
+              fontSize: cur !== 1 ? 13 : 14,
+            }}
+            onClick={() => setCur(1)}
+          >
+            我看过的
+          </p>
+        </div>
+        <div className='header-list' style={{ overflow: 'hidden' }}>
+          {cur === 0
+            ? groupList.map((item, index) => (
+                <MiniCard item={item} key={index}></MiniCard>
+              ))
+            : historyList.map((item, index) => (
+                <MiniCard item={item} key={index}></MiniCard>
+              ))}
           <MiniCard item={item}></MiniCard>
         </div>
       </div>
