@@ -40,7 +40,7 @@ function Explore() {
 
   const Rank = () => {
     return rankList.map((item, index) => (
-      <div key={+index} className='carousel__item__pic'>
+      <div key={+index} className='carousel_item_pic'>
         <div className='list-header'>
           <span style={{ fontSize: 14 }}>{item.name}</span>
           <span>233w人正在讨论</span>

@@ -49,11 +49,11 @@ function ChatRoom(props) {
         subscribe(client, '/topic/public');
         // subscribe(client, '/app/all');
         // subscribe(client, `/topic/room/${id}`);
-        subscribe(client, `/topic/user/${id}`, (res) => {
-          console.log(JSON.parse(res.body));
+        subscribe(client, `/queue/${id}`, (res) => {
+          console.log("收到消息" + JSON.parse(res.body.msg));
         });
-        subscribe(client, `/topic/user/${props.userInfo.id}`, (res) => {
-          console.log(JSON.parse(res.body));
+        subscribe(client, `/queue/${props.userInfo.id}`, (res) => {
+          console.log(JSON.parse(res.body.msg));
         });
       },
       (e) => {
