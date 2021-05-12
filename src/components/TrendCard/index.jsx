@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './index.scss';
+import React, { useState } from "react";
+import "./index.scss";
 
 // import { useState } from 'react';
-import { TabIcon } from '../../assets/icon';
-import { baseUrl } from '../../request';
+import { TabIcon } from "../../assets/icon";
+import { baseUrl } from "../../request";
 
 const Options = ({ item, handleChangeWriteModal }) => {
   // console.log(item);
@@ -11,9 +11,9 @@ const Options = ({ item, handleChangeWriteModal }) => {
   const [count2] = useState(0);
   const [count3, setCount3] = useState(0);
   return (
-    <div className='options-wrapper'>
+    <div className="options-wrapper">
       <div
-        className='options-item'
+        className="options-item"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -22,11 +22,11 @@ const Options = ({ item, handleChangeWriteModal }) => {
           // });
         }}
       >
-        <TabIcon type='iconfenxiang' />
+        <TabIcon type="iconfenxiang" />
         <span>{+item.share + count1}</span>
       </div>
       <div
-        className='options-item'
+        className="options-item"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -36,11 +36,11 @@ const Options = ({ item, handleChangeWriteModal }) => {
           // });
         }}
       >
-        <TabIcon type='iconpinglun' />
+        <TabIcon type="iconpinglun" />
         <span>{+item.comment + count2}</span>
       </div>
       <div
-        className='options-item'
+        className="options-item"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -50,10 +50,10 @@ const Options = ({ item, handleChangeWriteModal }) => {
         }}
       >
         <TabIcon
-          type='iconzan'
-          style={{ color: count3 ? 'rgb(20, 158, 255)' : '' }}
+          type="iconzan"
+          style={{ color: count3 ? "rgb(20, 158, 255)" : "" }}
         />
-        <span style={{ color: count3 ? 'rgb(20, 158, 255)' : '' }}>
+        <span style={{ color: count3 ? "rgb(20, 158, 255)" : "" }}>
           {+item.thumbup + count3}
         </span>
       </div>
@@ -62,21 +62,26 @@ const Options = ({ item, handleChangeWriteModal }) => {
 };
 
 function TrendCard({ item, handleClick, handleChangeWriteModal }) {
+  console.log(item)
   return (
-    <div className='trend-wrapper' onClick={() => handleClick(item)}>
-      <>
-        {/* <p></p> */}
-        <div
-          dangerouslySetInnerHTML={{
-            __html: item.content,
-          }}
-        ></div>
-        <img src={baseUrl + item.image} alt=''></img>
-        <Options
-          item={item}
-          handleChangeWriteModal={handleChangeWriteModal}
-        ></Options>
-      </>
+    <div className="trend-wrapper" onClick={() => handleClick(item)}>
+      {item ? (
+        <>
+          {/* <p></p> */}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: item.content,
+            }}
+          ></div>
+          <img src={baseUrl + item.image} alt=""></img>
+          <Options
+            item={item}
+            handleChangeWriteModal={handleChangeWriteModal}
+          ></Options>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -1,14 +1,19 @@
 .discuss-wrapper {
   .header {
-    height: 100px;
+    height: 150px;
     background: #ccc;
     color: #fff;
     padding: 15px;
     display: flex;
     justify-content: space-between;
+    background-image: url(../../assets/img/bgc/bgc3.jpg);
     .title {
       font-weight: bold;
-      padding-bottom: 3px;
+      padding: 20px 0;
+      font-size: 20px;
+    }
+    .total {
+      padding: 5px 0;
     }
     .desc {
       font-size: 13px;
@@ -24,6 +29,20 @@
         padding: 6px 12px;
         font-size: 13px;
         border-radius: 15px;
+      }
+    }
+  }
+
+  .body {
+    
+    padding: 0 5px;
+    .table-bar {
+
+      display: flex;
+      flex-direction: row;
+      height: 60px;
+      .table-bar-item {
+        padding: 10px 20px;
       }
     }
   }

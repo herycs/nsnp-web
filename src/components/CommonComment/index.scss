@@ -1,0 +1,36 @@
+.comment-wrapper {
+  padding: 0 10px;
+  background-color: #f5f5f5;
+  .article {
+    margin: 10px 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 0 20px;
+    .content {
+      padding: 20px 0;
+      font-size: 16px;
+      display: flex;
+      flex-direction: row;
+
+      .title {
+      }
+      .text {
+        color: rgb(117, 117, 235);
+      }
+    }
+    .detail {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      .flag {
+        font-size: 12px;
+        color: lightblue;
+      }
+
+      .time {
+        color: rgb(192, 147, 155);
+      }
+    }
+  }
+}

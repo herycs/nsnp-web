@@ -1,27 +1,29 @@
-import React, { useCallback } from 'react';
-import TrendCard from '../../../../components/TrendCard';
-import { Collapse } from 'zarm';
-import './index.scss';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
-import { baseUrl } from '../../../../request';
+import React, { useCallback } from "react";
+import TrendCard from "../../../../components/TrendCard";
+import { Collapse } from "zarm";
+import "./index.scss";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
+import { baseUrl } from "../../../../request";
 
 const UserInfo = ({ item = {}, handleRouteToUser }) => {
   // console.log(item);
   return (
     <div>
       {!item ? (
-        ''
+        ""
       ) : (
-        <div className='userinfo'>
-          <div className='avatar' onClick={() => handleRouteToUser(item)}>
-            <img src={baseUrl + item.avatar} alt=''></img>
+        <div className="userinfo">
+          <div className="avatar" onClick={() => handleRouteToUser(item)}>
+            <img src={baseUrl + item.avatar} alt=""></img>
           </div>
-          <div className='user' onClick={() => handleRouteToUser(item)}>
-            <p className='name'>{item.nickname}</p>
-            <p className='desc'>{item.interest.slice(2, 9)}</p>
+          <div className="user" onClick={() => handleRouteToUser(item)}>
+            <p className="name">{item.nickName}</p>
+            <p className="desc">
+              {item.interest && item.interest.slice(2, 15)}
+            </p>
           </div>
-          <div className='zhanwei'></div>
+          <div className="zhanwei"></div>
         </div>
       )}
     </div>
@@ -29,17 +31,18 @@ const UserInfo = ({ item = {}, handleRouteToUser }) => {
 };
 
 function HomeContent({ list, handleChangeWriteModal }) {
+  console.log("list", list);
   // 根据不同类型切换，发送请求，获取数据渲染
   let history = useHistory();
   const handleClick = useCallback(
     (item) => {
-      history.push('/detail?id=' + item.id);
+      history.push("/detail?id=" + item.id);
     },
     [history]
   );
   const handleRouteToUser = useCallback(
     (item) => {
-      history.push('/user?id=' + item.id);
+      history.push("/user?id=" + item.id);
     },
     [history]
   );
@@ -54,7 +57,7 @@ function HomeContent({ list, handleChangeWriteModal }) {
           // console.log(activeKey);
           // setActiveKey(activeKey);
         }}
-        defaultActiveKey={['0', '1', '2', '3']}
+        defaultActiveKey={["0", "1", "2", "3"]}
       >
         {/* <div className='content'> */}
         {list &&
@@ -65,7 +68,7 @@ function HomeContent({ list, handleChangeWriteModal }) {
                 title={
                   <UserInfo
                     item={item.userInfo}
-                    className='88'
+                    className="88"
                     handleRouteToUser={handleRouteToUser}
                   />
                 }
@@ -80,7 +83,7 @@ function HomeContent({ list, handleChangeWriteModal }) {
           })}
         {/* </div> */}
       </Collapse>
-      <Link to='pusharticle' className='pusharticle'>
+      <Link to="pusharticle" className="pusharticle">
         发布
       </Link>
     </>

@@ -1,0 +1,68 @@
+.creater-wrapper {
+  background-image: url(../../assets/img/bgc/bgc7.jpg);
+  width: 100%;
+  .title-wrapper {
+    display: flex;
+    justify-content: center;
+    .title {
+      font-size: 20px;
+      margin: 20px 0;
+    }
+  }
+
+  .user-info-wrapper {
+    height: 200px;
+
+    .user-info {
+      .user-wrapper {
+        display: flex;
+        flex-direction: column;
+        .info-summary {
+          display: flex;
+          justify-content: center;
+
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+          }
+
+          .user-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: aquamarine;
+          }
+        }
+        .name-wrapper {
+          display: flex;
+          justify-content: center;
+          .user-nickname {
+            padding-top: 10px;
+            font-size: 18px;
+          }
+        }
+      }
+      .user-count {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+        .user-count-item {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .direction-wrapper {
+    padding: 20px 10px;
+    .direction-title {
+      font-size: 20px;
+    }
+    .direction-content {
+      padding: 10px 0;
+      .direction-item {
+        padding: 10px 0;
+      }
+    }
+  }
+}

@@ -1,30 +1,34 @@
-import React, { useState } from 'react';
-import './index.scss';
-import { Input, Toast } from 'zarm';
-import { register } from '../../request';
-import { useHistory } from 'react-router';
+import React, { useState, useEffect } from "react";
+import "./index.scss";
+import { Input, Toast } from "zarm";
+import { register } from "../../request";
+import { useHistory } from "react-router";
 
-function Register() {
-  const [nickname] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
+function Register({ handleSetHeader }) {
+  useEffect(() => {
+    handleSetHeader("注册", true);
+  });
+
+  const [nickname] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
   const history = useHistory();
   const handleSubmit = () => {
     register({ password, mobile, nickname, email, code }).then((res) => {
       console.log(res);
       if (res.code === 20000) {
-        localStorage.setItem('token', res.data.token);
+        localStorage.setItem("token", res.data.token);
         Toast.show({
-          content: '注册成功',
+          content: "注册成功",
           afterClose() {
-            history.push('/home');
+            history.push("/home");
           },
         });
       } else {
         Toast.show({
-          content: '注册失败',
+          content: "注册失败",
           // afterClose() {
           //   window.location.reload();
           // },
@@ -34,13 +38,13 @@ function Register() {
   };
 
   return (
-    <div className='register-wrapper'>
-      <div className='register-plan-wrapper'>
-        <div className='register-header'>
-          <div className='register-title'>注册</div>
+    <div className="register-wrapper">
+      <div className="register-plan-wrapper">
+        <div className="register-header">
+          <div className="register-title">欢迎来到NS！</div>
         </div>
 
-        <div className='register-form'>
+        <div className="register-form">
           {/* <div className='register-item'>
             <div className='register-item-notice'>昵称:</div>
             <Input
@@ -52,50 +56,50 @@ function Register() {
             />
           </div> */}
 
-          <div className='register-item'>
-            <div className='register-item-notice'>手机号:</div>
+          <div className="register-item">
+            <div className="register-item-notice">手机号:</div>
             <Input
               clearable
-              type='text'
-              placeholder='请输入手机号'
+              type="text"
+              placeholder="请输入手机号"
               value={mobile}
               onChange={setMobile}
             />
           </div>
 
-          <div className='register-item'>
-            <div className='register-item-notice'>邮箱:</div>
+          <div className="register-item">
+            <div className="register-item-notice">邮箱:</div>
             <Input
               clearable
-              type='text'
-              placeholder='请输入邮箱'
+              type="text"
+              placeholder="请输入邮箱"
               value={email}
               onChange={setEmail}
             />
           </div>
 
-          <div className='register-item'>
-            <div className='register-item-notice'>密码:</div>
+          <div className="register-item">
+            <div className="register-item-notice">密码:</div>
             <Input
               clearable
-              type='text'
-              placeholder='请输入密码'
+              type="text"
+              placeholder="请输入密码"
               value={password}
               onChange={setPassword}
             />
           </div>
-          <div className='register-item'>
-            <div className='register-item-notice'>验证码:</div>
+          <div className="register-item">
+            <div className="register-item-notice">验证码:</div>
             <Input
               clearable
-              type='text'
-              placeholder='请输入验证码'
+              type="text"
+              placeholder="请输入验证码"
               value={code}
               onChange={setCode}
             />
           </div>
-          <div className='register-button-wrapper'>
-            <div className='register-button' onClick={handleSubmit}>
+          <div className="register-button-wrapper">
+            <div className="register-button" onClick={handleSubmit}>
               提交
             </div>
           </div>

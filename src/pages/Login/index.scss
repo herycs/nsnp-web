@@ -45,9 +45,15 @@
 
       .login-button-wrapper {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         padding: 15px;
+
         .login-button {
+          font-size: 18px;
+
+          color: #a8a2a2;
+        }
+        .reg-button {
           font-size: 18px;
 
           color: #a8a2a2;

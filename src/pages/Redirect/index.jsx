@@ -56,7 +56,7 @@ function Redirect({ route, ...props }) {
   );
 
   return (
-    <div>
+    <div style={{paddingTop:44}}>
       {hideList.indexOf(pathname) === -1 ? (
         <Header
           title={title}

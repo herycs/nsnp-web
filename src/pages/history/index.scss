@@ -1,0 +1,26 @@
+.history-wrapper {
+  padding: 0 10px;
+
+  .article {
+    margin: 10px 5px;
+    padding: 0 20px;
+    height: 220px;
+    border-radius: 10px;
+    background-color: #fff;
+
+    .title {
+      font-size: 18px;
+      padding: 10px 0;
+      color: lightblue;
+    }
+    .content {
+      height: 150px;
+      font-size: 16px;
+    }
+    .detail {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

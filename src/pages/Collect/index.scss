@@ -1,0 +1,25 @@
+.collect-wrapper {
+  padding: 0 10px;
+  background-color: #f5f5f5;
+  .article {
+    margin: 10px 5px;
+    height: 220px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 0 20px;
+    .title {
+      font-size: 18px;
+      padding: 10px 0;
+      color: lightblue;
+    }
+    .content {
+      height: 150px;
+      font-size: 16px;
+    }
+    .detail {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

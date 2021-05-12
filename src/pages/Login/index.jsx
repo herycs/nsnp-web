@@ -1,72 +1,91 @@
-import { useState } from 'react';
-import { login } from '../../request';
-import './index.scss';
-import { Input, Toast } from 'zarm';
-import { useHistory } from 'react-router';
+import React, { useState, useEffect } from "react";
+import { login } from "../../request";
+import "./index.scss";
+import { Input, Toast } from "zarm";
+import { useHistory } from "react-router";
 
-function Login({ route }) {
+function Login({ route, handleSetHeader }) {
+  useEffect(() => {
+    handleSetHeader("登录", true);
+  });
+
   const history = useHistory();
-  const [mobile, setMobile] = useState('');
-  const [password, setPassword] = useState('');
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
   const handleLogin = () => {
+    let regs = /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/;
+    if (mobile.length == 0) {
+      Toast.show("手机号输入不合法");
+      return;
+    } else if (!regs.test(mobile)) {
+      Toast.show("手机号输入不合法");
+      return;
+    }
+
     login({ password, mobile }).then((res) => {
       console.log(res);
       if (res.code === 20000) {
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('userid', res.data.uid);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userid", res.data.uid);
         Toast.show({
-          content: '登录成功',
+          content: "登录成功",
           afterClose() {
-            history.push('/home');
+            history.push("/home");
           },
         });
       }
     });
   };
   return (
-    <div className='login-wrapper'>
-      <div className='login-plan-wrapper'>
-        <div className='login-header'>
-          <div className='login-title'>NSNP-欢迎您!</div>
+    <div className="login-wrapper">
+      <div className="login-plan-wrapper">
+        <div className="login-header">
+          <div className="login-title">NSNP-欢迎您!</div>
         </div>
-        <div className='login-form'>
+        <div className="login-form">
           {/* <Cell title='单行文本'> */}
 
           {/* </Cell> */}
-          <div className='login-item'>
-            <div className='login-item-notice'>手机号:</div>
+          <div className="login-item">
+            <div className="login-item-notice">手机号:</div>
             <Input
               clearable
-              type='text'
-              placeholder='请输入手机号码'
+              type="text"
+              placeholder="请输入手机号码"
               value={mobile}
               onChange={setMobile}
             />
             {/* <div className='login-item-prop'>请输入手机号码</div> */}
           </div>
 
-          <div className='login-item'>
-            <div className='login-item-notice'>密码 : </div>
+          <div className="login-item">
+            <div className="login-item-notice">密码 : </div>
             <Input
               clearable
-              type='text'
-              placeholder='请输入密码'
+              type="password"
+              placeholder="请输入密码"
               value={password}
               onChange={setPassword}
             />
             {/* <div className='login-item-prop'>请输入密码</div> */}
           </div>
 
-          <div className='login-button-wrapper'>
-            <div className='login-button' onClick={handleLogin}>
+          <div className="login-button-wrapper">
+            <div className="login-button" onClick={handleLogin}>
               登录
+            </div>
+            <div
+              className="reg-button"
+              onClick={() => history.push("/register/")}
+            >
+              注册
             </div>
           </div>
 
-          <div className='login-user-access'>
-            <div className='user-access'>
+          <div className="login-user-access">
+            <div className="user-access">
               用户登录即同意：
-              <a href='http://www.baidu.com'>用户协议</a>
+              <a href="http://www.baidu.com">用户协议</a>
             </div>
           </div>
         </div>

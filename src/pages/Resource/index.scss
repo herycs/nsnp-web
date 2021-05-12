@@ -1,0 +1,65 @@
+.source-wrapper {
+  padding: 0 10px;
+  background-color: #fff;
+  height: 100vh;
+
+  .search {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    .text {
+      height: 60px;
+      width: 150px;
+    }
+    .button {
+      margin-left: 20px;
+      width: 100px;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 13px;
+      background-color: lightblue;
+    }
+    .push {
+      margin-left: 20px;
+      width: 100px;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 13px;
+      background-color: lightblue;
+    }
+  }
+
+  .source {
+    background-image: url("../../assets/img/bgc/bgc2.jpg");
+    margin: 10px 5px;
+    height: 120px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 0 10px;
+    .title {
+      font-size: 18px;
+      padding: 20px 0;
+    }
+
+    .detail {
+      padding-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .upload-time {
+        color: rgb(35, 156, 31);
+      }
+      .update-time {
+        color: rgb(241, 215, 98);
+      }
+    }
+  }
+  .notice {
+    display: flex;
+    justify-content: center;
+    .no-resource-toast {
+      padding-top: 30px;
+      color: rgb(238, 163, 163);
+    }
+  }
+}

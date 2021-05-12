@@ -1,29 +1,45 @@
-import { useEffect, useState } from 'react';
-import { Tabs, Loading } from 'zarm';
+import { useEffect, useState } from "react";
+import { Tabs, Loading } from "zarm";
 
 const { Panel } = Tabs;
 
-const HomeTabs = () => {
-  const [value, setValue] = useState(0);
+const HomeTabs = ({ handleChange }) => {
+  const [value, setValue] = useState("recommend");
+  const [cur, setCur] = useState(0);
 
   useEffect(() => {
-    console.log(value);
+    handleChange("recommend");
+  }, []);
+
+  useEffect(() => {
+    handleChange(value);
   }, [value]);
 
   return (
     <Tabs
-      value={value}
+      value={cur}
       onChange={(e) => {
-        setValue(e);
+        setCur(e);
+        if (e === 0) {
+          setValue("recommend");
+        }
+
+        if (e === 1) {
+          setValue("happyList");
+        }
+        if (e === 2) {
+          setValue("hotList");
+        }
+        // setValue(e);
         Loading.show();
         setTimeout(() => {
           Loading.hide();
         }, 1200);
       }}
     >
-      <Panel title='推荐'></Panel>
-      <Panel title='娱乐'></Panel>
-      <Panel title='热点'></Panel>
+      <Panel title="推荐"></Panel>
+      <Panel title="娱乐"></Panel>
+      <Panel title="热点"></Panel>
     </Tabs>
   );
 };
