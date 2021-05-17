@@ -11,7 +11,7 @@
       .userInfo {
         display: flex;
         flex-direction: row;
-
+        padding: 10px 0;
         .avatar {
           width: 60px;
           height: 60px;
@@ -51,9 +51,10 @@
     }
     .article-body {
       margin-top: 20px;
-      height: 150px;
+      min-height: 180px;
       font-size: 16px;
       .article-body {
+        padding: 5px 0;
       }
       img {
         width: 50%;

@@ -5,9 +5,10 @@ import HomeContent from "./components/HomeContent";
 import HomeTabs from "./components/HomeTabs";
 import { actionCreator } from "../../store/modules/home";
 import { useCallback, useEffect, useState } from "react";
-
+import { TabIcon } from "../../assets/icon";
 import { getAllArticle } from "../../request";
 import { useHistory } from "react-router";
+import "./index.scss";
 
 function Home({ route }) {
   // const [list, setList] = useState([]);
@@ -45,13 +46,26 @@ function Home({ route }) {
     [setStr]
   );
 
+  // const location = useLocation();
+
   return (
     <div>
-      <HomeTabs handleChange={handleChange}></HomeTabs>
-      <HomeContent
-        handleChangeWriteModal={handleChangeWriteModal}
-        list={res[str]}
-      ></HomeContent>
+      <TabIcon
+        type="iconrefresh"
+        key={1}
+        className="reflesh"
+        onClick={() => {
+          window.location.reload();
+        }}
+      />
+
+      <div style={{ paddingBottom: 80 }}>
+        <HomeTabs handleChange={handleChange}></HomeTabs>
+        <HomeContent
+          handleChangeWriteModal={handleChangeWriteModal}
+          list={res[str]}
+        ></HomeContent>
+      </div>
     </div>
   );
 }

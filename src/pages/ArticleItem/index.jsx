@@ -21,11 +21,7 @@ function ArticleItem({ index, userInfo, articleInfo }) {
         <div className="user">
           <div className="user-header">
             <div className="userInfo">
-              <img
-                className="avatar"
-                src={userInfo.avatar ? "" : baseUrl + userInfo.avatar}
-                alt=""
-              />
+              <img className="avatar" src={baseUrl + userInfo.avatar} alt="" />
               <div className="detail">
                 <div className="name">{userInfo.nickName}</div>
                 <div className="summary">
@@ -42,9 +38,9 @@ function ArticleItem({ index, userInfo, articleInfo }) {
       ) : (
         <div className="article">
           <div className="article-header">
-            <div className="article-title">
+            {/* <div className="article-title">
               {articleInfo.title ? articleInfo.title : ""}
-            </div>
+            </div> */}
             <div className="time">
               {articleInfo.createtime
                 ? articleInfo.createtime.slice(0, 10)

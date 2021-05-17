@@ -11,7 +11,7 @@ function Creater({ userInfo, handleSetHeader }) {
 
   // useEffect(() => {
   //   getUserArticle().then((res) => {
-  //   if (res.code === 20000) {   
+  //   if (res.code === 20000) {
   // console.log(res);
   // }
   //   });

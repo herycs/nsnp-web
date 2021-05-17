@@ -6,6 +6,8 @@ export { baseUrl, chatUrl };
 
 const userid = localStorage.getItem("userid");
 
+export { userid };
+
 /**
  * 登录注册
  */
@@ -16,6 +18,9 @@ export const register = (data) =>
 /**
  * 文章页
  */
+export const collectArticle = (aid) =>
+  axiosInstance.get("/article/article/collect/" + aid + "/" + userid);
+
 export const getAllArticle = () =>
   axiosInstance.get("article/article/recommend/" + userid);
 export const uploadFile = (data) =>
@@ -52,6 +57,11 @@ export const getLifeRecommendArticle = (id) =>
 export const getGroupDetail = (id) =>
   axiosInstance.get(`/article/group/${id}/`);
 
+export const getGroupItem = (id) => axiosInstance.get(`/article/column/${id}/`);
+
+export const getUserVisit = () =>
+  axiosInstance.get(`/article/column/visit/limit/${userid}`);
+
 /**
  * 聊天模块
  */
@@ -72,6 +82,13 @@ export const changePassword = ({ code, data }) =>
   axiosInstance.post("/user/user/pass/" + code, data);
 
 // 粉丝 + 关注
+
+//增加好友，移除好友
+export const addFriend = (friendId) =>
+  axiosInstance.get("/user/friend/add/" + userid + `/${friendId}`);
+export const delFriend = (friendId) =>
+  axiosInstance.get("/user/friend/del/" + userid + `/${friendId}`);
+
 export const getFriendList = () =>
   axiosInstance.get("/user/friend/friends/" + userid);
 export const getFunList = () => axiosInstance.get("/user/friend/fun/" + userid);
@@ -104,14 +121,13 @@ export const getThumbList = () =>
   axiosInstance.get("/article/article/comm/" + userid);
 
 // 资源管理
-
+export const addResource = (aid) =>
+  axiosInstance.get("/resource/source/" + aid + "/" + userid);
 export const getResourceList = () =>
   axiosInstance.get("/article/resource/" + userid);
 export const updateResourceList = (id, data) =>
   axiosInstance.post("/articel/resource/update/" + id, data);
 export const delRessource = (id) =>
   axiosInstance.delete("/articel/resource/del/" + id);
-export const findSourceList = (name) => axiosInstance.get(`/article/resource/find/${name}`);
-
-export const getUserVisit = () =>
-  axiosInstance.get(`/article/column/visit/${userid}`);
+export const findSourceList = (name) =>
+  axiosInstance.get(`/article/resource/find/${name}`);

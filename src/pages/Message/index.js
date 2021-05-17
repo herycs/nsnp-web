@@ -71,7 +71,7 @@ function Message({ handleSetHeader }) {
               setCur(0);
             }}
           >
-            系统
+            好友
           </div>
           <div
             className="msg-menu-item"
@@ -80,7 +80,7 @@ function Message({ handleSetHeader }) {
               setCur(1);
             }}
           >
-            好友
+            系统
           </div>
         </div>
         <div>

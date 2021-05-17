@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Carousel } from "zarm";
-import ArticleItem from "../ArticleItem";
 import {
   baseUrl,
   getGroup,
@@ -12,12 +11,14 @@ import {
 import "./index.scss";
 
 function LifeCard({ item }) {
+  const history = useHistory();
   const [lifeList, setLisfeList] = useState([]);
 
   useEffect(() => {
     getLifeRecommendArticle(0).then((res) => {
       if (res.code === 20000) {
-        console.log(res.data);
+        console.log("life", res.data);
+        setLisfeList(res.data);
       }
     });
   }, []);
@@ -26,12 +27,23 @@ function LifeCard({ item }) {
     <div className="life-wrapper">
       {lifeList.map((item, index) => {
         return (
-          <ArticleItem
-            key={index}
-            index={index}
-            userInfo={null}
-            articleInfo={item}
-          />
+          <div
+            className="life-item-wrapper"
+            onClick={() => {
+              history.push("/detail?id=" + item.id);
+            }}
+          >
+            <div
+              className="body"
+              style={{
+                backgroundImage: `url(${baseUrl + item.image})`,
+              }}
+            ></div>
+
+            <div className="title">
+              <span>{item.title}</span>
+            </div>
+          </div>
         );
       })}
     </div>

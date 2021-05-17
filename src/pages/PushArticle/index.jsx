@@ -11,7 +11,13 @@ import {
   Button,
   Picker,
 } from "zarm";
-import { getChannel, uploadFile, addChannel, addArticle } from "../../request";
+import {
+  getChannel,
+  uploadFile,
+  addChannel,
+  addArticle,
+  getGroup,
+} from "../../request";
 import "./index.scss";
 
 const MAX_FILES_COUNT = 1;
@@ -36,6 +42,10 @@ function PushArticle({ handleSetHeader }) {
   const [channel, setChannel] = useState([
     { value: "999", label: "添加新标签" },
   ]);
+  const [circleValue, setCircleValue] = useState("");
+  const [circleList, setCircleList] = useState([]);
+  const [circlePickerVisible, setCirclePickerVisible] = useState(false);
+  const [circleData, setCircleData] = useState("");
 
   const getChannelList = () => {
     getChannel().then((res) => {
@@ -48,7 +58,7 @@ function PushArticle({ handleSetHeader }) {
       ]);
     });
   };
-  
+
   const handleAddChannel = () => {
     let data = { name: newChannel, status: 1 };
     addChannel(data).then((res) => {
@@ -67,6 +77,15 @@ function PushArticle({ handleSetHeader }) {
   };
   useEffect(() => {
     getChannelList();
+    getGroup().then((res) => {
+      if (res.code === 20000) {
+        setCircleList([
+          ...res.data.map((item) => {
+            return { value: item.id, label: item.name };
+          }),
+        ]);
+      }
+    });
   }, []);
   const onSelect = (selFiles) => {
     // console.log(selFiles[0]);
@@ -97,7 +116,7 @@ function PushArticle({ handleSetHeader }) {
       content,
       channelid: value[0],
       image: imgs,
-      columnid: "",
+      columnid: circleValue[0],
     };
     addArticle(data).then((res) => {
       if (res.code === 20000) {
@@ -174,6 +193,23 @@ function PushArticle({ handleSetHeader }) {
       >
         标签
       </Cell>
+
+      <Cell title="圈子">
+        <Input
+          type="text"
+          onChange={setTitle}
+          value={circleData}
+          placeholder="请选择圈子"
+        />
+        <Button
+          style={{ width: 50 }}
+          size="xs"
+          onClick={() => setCirclePickerVisible(true)}
+        >
+          选择
+        </Button>
+      </Cell>
+
       <Cell title="分享新鲜事" style={{ marginTop: 10 }}>
         <Input
           type="text"
@@ -220,6 +256,22 @@ function PushArticle({ handleSetHeader }) {
           setVisible(false);
         }}
         onCancel={() => setVisible(false)}
+      />
+
+      <Picker
+        visible={circlePickerVisible}
+        value={circleValue}
+        dataSource={circleList}
+        defaultValue="0"
+        onOk={(selected) => {
+          console.log(selected);
+          setCircleValue(selected.map((item) => item.value));
+
+          setCircleData(selected.map((item) => item.label));
+
+          setCirclePickerVisible(false);
+        }}
+        onCancel={() => setCirclePickerVisible(false)}
       />
       <Button onClick={handleSubmit}>提交</Button>
     </div>

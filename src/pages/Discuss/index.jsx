@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getGroupDetail } from "../../request";
+import { baseUrl, getGroupDetail } from "../../request";
 import ArticleItem from "../ArticleItem";
 import "./index.scss";
 
@@ -8,6 +8,7 @@ function Discuss({ handleSetHeader, match }) {
   const [info, setInfo] = useState({});
   const [news, setNews] = useState([]);
   const [hots, setHots] = useState([]);
+  const [join, setJoin] = useState(false);
   useEffect(() => {
     handleSetHeader("圈子", true);
   });
@@ -25,14 +26,22 @@ function Discuss({ handleSetHeader, match }) {
   }, []);
   return (
     <div className="discuss-wrapper">
-      <div className="header">
+      <div
+        className="header"
+        style={{ backgroundImage: `url(${baseUrl + info.img})` }}
+      >
         <div>
           <p className="title">{info.name}</p>
           <p className="total">{info.member}</p>
           <p className="desc">{info.summary}</p>
         </div>
-        <p className="join">
-          <span>{info.state ? "已加入" : "加入"}</span>
+        <p
+          className="join"
+          onClick={() => {
+            setJoin(!join);
+          }}
+        >
+          <span>{join ? "已加入" : "加入"}</span>
         </p>
       </div>
       <div className="body">

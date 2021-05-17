@@ -3,11 +3,11 @@ import Comments from "../../components/Comments";
 import TrendCard from "../../components/TrendCard";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreator } from "../../store/modules/home";
-
+import { useHistory } from "react-router";
 import { useState, useCallback, useEffect } from "react";
 import { Popup, Cell, Button, Input } from "zarm";
 import "./index.scss";
-import { baseUrl, getArticle, getComment } from "../../request";
+import { baseUrl, getArticle, getComment, getGroupItem } from "../../request";
 
 const item = {
   id: "2123bsa",
@@ -31,6 +31,42 @@ const UserInfo = ({ data }) => {
       <div className="user">
         <p className="name">{data.nickname}</p>
         <p className="desc">{data.interest.slice(2, 9)}</p>
+      </div>
+    </div>
+  );
+};
+
+const GroupBar = ({ id }) => {
+  const history = useHistory();
+  const [group, setGroup] = useState([]);
+  useEffect(() => {
+    getGroupItem(id).then((res) => {
+      setGroup(res.data);
+    });
+  }, []);
+
+  return (
+    <div className="group-list">
+      <div
+        className="group-item"
+        style={{ backgroundImage: `url(${baseUrl}${group.img})` }}
+      >
+        <div className="text">
+          <p className="name">
+            <span>{group.name}</span>
+            <span>{group.member}</span>
+          </p>
+          <p className="summary">{group.summary}</p>
+          <p
+            className="join-in"
+            onClick={() => {
+              history.push(`/discuss/${group.id}`);
+            }}
+          >
+            {" "}
+            进入
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -96,6 +132,7 @@ function Detail(props) {
               ></TrendCard>
             </Collapse.Item>
           </Collapse>
+          <GroupBar id={data.articleInfo.columnid}></GroupBar>
           <Comments
             id={id}
             item={item}

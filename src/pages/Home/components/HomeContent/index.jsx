@@ -17,7 +17,7 @@ const UserInfo = ({ item = {}, handleRouteToUser }) => {
           <div className="avatar" onClick={() => handleRouteToUser(item)}>
             <img src={baseUrl + item.avatar} alt=""></img>
           </div>
-          <div className="user" onClick={() => handleRouteToUser(item)}>
+          <div className="user">
             <p className="name">{item.nickName}</p>
             <p className="desc">
               {item.interest && item.interest.slice(2, 15)}
@@ -41,8 +41,8 @@ function HomeContent({ list, handleChangeWriteModal }) {
     [history]
   );
   const handleRouteToUser = useCallback(
-    (item) => {
-      history.push("/user?id=" + item.id);
+    (user) => {
+      history.push("/user?id=" + user.id);
     },
     [history]
   );

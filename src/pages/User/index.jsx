@@ -9,6 +9,7 @@ import {
   getUserLifeRecordList,
   getCommentList,
   getUserGroupList,
+  userid,
 } from "../../request";
 import { useHistory } from "react-router";
 
@@ -16,6 +17,10 @@ const Header = ({ userInfo }) => {
   const [flag, setFlag] = useState(false);
   const [optionFlag, setOptionFlag] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    console.log("userinfo.id", userInfo.id);
+  });
 
   return (
     <div className="header">
@@ -26,65 +31,69 @@ const Header = ({ userInfo }) => {
           </div>
           <p className="username">{userInfo.nickName}</p>
         </div>
-        <div className="right">
-          <span
-            className="message"
-            onClick={() => {
-              Toast.show({
-                content: "当前功能未开放",
-                stayTime: 1500,
-                afterClose: () => {
-                  // setFlag(!flag);
-                  // console.log('Toast已关闭');
-                },
-              });
-            }}
-          >
-            私信
-          </span>
-          <span
-            className="following"
-            onClick={() => {
-              if (optionFlag) {
+        {userInfo.id === userid ? (
+          <div />
+        ) : (
+          <div className="right">
+            <span
+              className="message"
+              onClick={() => {
                 Toast.show({
-                  content: "请取消屏蔽后，再进行关注",
+                  content: "当前功能未开放",
                   stayTime: 1500,
                   afterClose: () => {
                     // setFlag(!flag);
                     // console.log('Toast已关闭');
                   },
                 });
-              } else {
-                setFlag(!flag);
+              }}
+            >
+              私信
+            </span>
+            <span
+              className="following"
+              onClick={() => {
+                if (optionFlag) {
+                  Toast.show({
+                    content: "请取消屏蔽后，再进行关注",
+                    stayTime: 1500,
+                    afterClose: () => {
+                      // setFlag(!flag);
+                      // console.log('Toast已关闭');
+                    },
+                  });
+                } else {
+                  setFlag(!flag);
+                  Toast.show({
+                    content: !flag ? "关注成功" : "已取消",
+                    stayTime: 1500,
+                    afterClose: () => {
+                      // console.log('Toast已关闭');
+                    },
+                  });
+                }
+              }}
+            >
+              {!flag ? "关注" : "取消关注"}
+            </span>
+            <span
+              className="option"
+              onClick={() => {
+                setOptionFlag(!optionFlag);
+                setFlag(false);
                 Toast.show({
-                  content: !flag ? "关注成功" : "已取消",
+                  content: !optionFlag ? "屏蔽成功,已同时取消关注" : "已取消",
                   stayTime: 1500,
                   afterClose: () => {
                     // console.log('Toast已关闭');
                   },
                 });
-              }
-            }}
-          >
-            {!flag ? "关注" : "取消关注"}
-          </span>
-          <span
-            className="option"
-            onClick={() => {
-              setOptionFlag(!optionFlag);
-              setFlag(false);
-              Toast.show({
-                content: !optionFlag ? "屏蔽成功,已同时取消关注" : "已取消",
-                stayTime: 1500,
-                afterClose: () => {
-                  // console.log('Toast已关闭');
-                },
-              });
-            }}
-          >
-            {!optionFlag ? "屏蔽" : "取消屏蔽"}
-          </span>
-        </div>
+              }}
+            >
+              {!optionFlag ? "屏蔽" : "取消屏蔽"}
+            </span>
+          </div>
+        )}
       </div>
       <div className="bottom">
         <p className="follow">

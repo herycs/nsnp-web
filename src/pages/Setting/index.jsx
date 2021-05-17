@@ -54,18 +54,18 @@ function Setting({ handleSetHeader, userInfo }) {
       <Cell
         hasArrow
         onClick={() => {
-          history.push('/logout');
+          history.push('/message/0000');
         }}
         title='客服反馈'
         style={{ marginTop: 10 }}
       />
-      <Cell
+      {/* <Cell
         hasArrow
         onClick={() => {
           history.push('/logout');
         }}
         title='关于我们'
-      />
+      /> */}
     </div>
   );
 }
