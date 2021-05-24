@@ -18,7 +18,7 @@ function Comments({ item, data, id, handleRender }) {
     <div className="comments-wrapper" style={{ paddingBottom: 100 }}>
       <div className="header">
         <span>评论</span>
-        <span>排序方式</span>
+        {/* <span>排序方式</span> */}
       </div>
       {Array.isArray(data) &&
         data.map((item, index) => {

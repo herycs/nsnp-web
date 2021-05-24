@@ -42,6 +42,7 @@ function HomeContent({ list, handleChangeWriteModal }) {
   );
   const handleRouteToUser = useCallback(
     (user) => {
+      console.log('handleRoutTouser', user)
       history.push("/user?id=" + user.id);
     },
     [history]

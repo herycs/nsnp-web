@@ -10,6 +10,7 @@ import {
   getCommentList,
   getUserGroupList,
   userid,
+  getUserInfoV1,
 } from "../../request";
 import { useHistory } from "react-router";
 
@@ -18,9 +19,9 @@ const Header = ({ userInfo }) => {
   const [optionFlag, setOptionFlag] = useState(false);
   const history = useHistory();
 
-  useEffect(() => {
-    console.log("userinfo.id", userInfo.id);
-  });
+  // useEffect(() => {
+  //   console.log("userinfo.id", userInfo.id);
+  // },[]);
 
   return (
     <div className="header">
@@ -38,14 +39,18 @@ const Header = ({ userInfo }) => {
             <span
               className="message"
               onClick={() => {
-                Toast.show({
-                  content: "当前功能未开放",
-                  stayTime: 1500,
-                  afterClose: () => {
-                    // setFlag(!flag);
-                    // console.log('Toast已关闭');
-                  },
-                });
+                if (flag) {
+                  history.push("/message/" + userInfo.id);
+                } else {
+                  Toast.show({
+                    content: "请先关注",
+                    stayTime: 1500,
+                    afterClose: () => {
+                      // setFlag(!flag);
+                      // console.log('Toast已关闭');
+                    },
+                  });
+                }
               }}
             >
               私信
@@ -76,7 +81,7 @@ const Header = ({ userInfo }) => {
             >
               {!flag ? "关注" : "取消关注"}
             </span>
-            <span
+            {/* <span
               className="option"
               onClick={() => {
                 setOptionFlag(!optionFlag);
@@ -91,7 +96,7 @@ const Header = ({ userInfo }) => {
               }}
             >
               {!optionFlag ? "屏蔽" : "取消屏蔽"}
-            </span>
+            </span> */}
           </div>
         )}
       </div>
@@ -101,9 +106,17 @@ const Header = ({ userInfo }) => {
           <span className="follow-count">{userInfo.likeCount}关注</span>
           <span className="fans">{userInfo.funCount}粉丝</span>
         </p>
-        <p className="desc" onClick={() => history.push("/change_interest")}>
+        <p className="desc">
           {userInfo.interest ? userInfo.interest.slice(0, 15) : ""}
-          <TabIcon type="iconbianji" key={1} />
+          {userid === userInfo.id ? (
+            <TabIcon
+              type="iconbianji"
+              key={1}
+              onClick={() => history.push("/change_interest")}
+            />
+          ) : (
+            ""
+          )}
         </p>
       </div>
     </div>
@@ -156,6 +169,7 @@ function Comment() {
 }
 
 function Group() {
+  const history = useHistory();
   const [groupList, setGroupList] = useState([]);
   useEffect(() => {
     getUserGroupList().then((res) => {
@@ -168,6 +182,7 @@ function Group() {
         <div
           className="group-item"
           key={index}
+          onClick={() => history.push('/discuss/' + item.id)}
           style={{ backgroundImage: `url(${baseUrl}${item.img})` }}
         >
           <div className="text">
@@ -211,14 +226,23 @@ const List = () => {
   );
 };
 
-function User({ userInfo }) {
-  // const userInfo = useSelector((state) => {
-  //   return state.getIn(['user', 'userInfo']);
-  // });
+function User({ userInfo, ...props }) {
+  const [newUserInfo, setnewUserInfo] = useState({});
+  useEffect(() => {
+    console.log("User page", userInfo);
+
+    const userId = props.location.search.slice(4);
+    getUserInfoV1(userId).then((res) => {
+      console.log(res.data);
+      setnewUserInfo(res.data);
+    });
+
+    console.log(userId);
+  }, []);
 
   return (
     <div className="user-wrapper">
-      <Header userInfo={userInfo}></Header>
+      <Header userInfo={newUserInfo}></Header>
       <List></List>
     </div>
   );

@@ -11,6 +11,7 @@ export { userid };
 /**
  * 登录注册
  */
+
 export const login = (data) => axiosInstance.post("user/user/login", data);
 export const register = (data) =>
   axiosInstance.post(`user/user/register/${data.code}`, data);
@@ -50,6 +51,7 @@ export const getGroup = () =>
   axiosInstance.get("/article/column/in/limit/" + userid);
 export const getRankList = () => axiosInstance.get("/article/column/hot");
 export const getUserInfo = () => axiosInstance.get("/user/user/info/" + userid);
+export const getUserInfoV1 = (id) => axiosInstance.get("/user/user/info/" + id);
 
 export const getLifeRecommendArticle = (id) =>
   axiosInstance.get(`/article/article/life/${id}` + "/" + userid);

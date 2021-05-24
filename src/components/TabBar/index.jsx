@@ -30,13 +30,13 @@ function UserTabBar({ visible = true }) {
           itemKey="message"
           title="消息"
           icon={<TabIcon type="iconxiaoxi1" />}
-          badge={{ shape: "circle", text: "1" }}
+          // badge={{ shape: "circle", text: "1" }}
         />
         <TabBar.Item
           itemKey="me"
           title="我的"
           icon={<TabIcon type="iconyonghu" />}
-          badge={{ shape: "dot" }}
+          // badge={{ shape: "dot" }}
         />
       </TabBar>
     </>

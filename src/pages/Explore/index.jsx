@@ -28,6 +28,7 @@ function LifeCard({ item }) {
       {lifeList.map((item, index) => {
         return (
           <div
+            key={index}
             className="life-item-wrapper"
             onClick={() => {
               history.push("/detail?id=" + item.id);
@@ -105,7 +106,7 @@ function Explore() {
       <div key={+index} className="carousel_item_pic">
         <div className="list-header">
           <span style={{ fontSize: 14 }}>{item.name}</span>
-          <span>233w人正在讨论</span>
+          <span>50+k人正在讨论</span>
         </div>
         <div className="list-content">
           {item.data.splice(0, 3).map((item, index) => (
@@ -137,7 +138,7 @@ function Explore() {
                     color: `rgba(255, 165, 0,.9)`,
                   }}
                 >
-                  {item.pro}w热度
+                  {item.pro}k热度
                 </p>
               </div>
             </div>
